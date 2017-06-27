@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Ur Buddy</string>
+
+    <string name="mess">Mess</string>
+    <string name="acadmic">Acadmic</string>
+    <string name="hostel">Hostel</string>
+    <string name="suggestview">Give your view</string>
+    <string name="contactus">Contact us</string>
+    <string name="logout">Log Out</string>
+
+    <string name="title_activity_splashscreen">Ur Buddy</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+   <string name="email">  | Email-ID</string>
+    <string name="username">  | Username</string>
+    <string name="login">Login</string>
+
+
+</resources>
