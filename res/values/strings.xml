@@ -12,9 +12,11 @@
     <string name="title_activity_login">Sign in</string>
 
     <!-- Strings related to login -->
-   <string name="email">  | Email-ID</string>
+    <string name="email">  | Email-ID</string>
     <string name="username">  | Username</string>
     <string name="login">Login</string>
-
+    <string name="resendotp">Resend OTP</string>
+    <string name="submit">Submit</string>
+    <string name="checkmail">Please check your email for</string>
 
 </resources>
