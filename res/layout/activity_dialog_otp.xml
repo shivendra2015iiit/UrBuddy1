@@ -35,7 +35,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/getotp"
         android:layout_width="238dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="29dp"
@@ -48,10 +48,11 @@
         android:id="@+id/submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="17dp"
-        android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="17dp"
         android:background="@drawable/pressedbutton"
+        android:onClick="submitclicked"
         android:text="@string/submit"
         android:textAlignment="center"
         android:textColor="@android:color/white" />

@@ -11,12 +11,23 @@
     <string name="title_activity_splashscreen">Ur Buddy</string>
     <string name="title_activity_login">Sign in</string>
 
-    <!-- Strings related to login -->
-    <string name="email">  | Email-ID</string>
-    <string name="username">  | Username</string>
+    <!-- Strings related to login and signup-->
+    <string name="email">Email-ID</string>
     <string name="login">Login</string>
     <string name="resendotp">Resend OTP</string>
     <string name="submit">Submit</string>
     <string name="checkmail">Please check your email for</string>
+    <string name="password">Password</string>
+    <string name="cpassword">Confirm Password</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="ask_signup">New here? Sign Up</string>
+    <string name="ask_signin">Already Registered? Login</string>
+    <string name="signup">Sign Up</string>
+    <string name="fillall">Please Fill All Fields</string>
+    <string name="validid">Please Enter valid Email</string>
+    <string name="passlen">Password should be greater than 7 chars.</string>
+    <string name="nologin">Looks Like You need To sign Up</string>
+    <string name="no_valid_domain">Your Domain is not Registered ! \n Please Contact Your Institution</string>
+    <string name="no_internet">Your Device Has No Active Connections</string>
 
 </resources>
