@@ -4,6 +4,7 @@
     <string name="mess">Mess</string>
     <string name="acadmic">Acadmic</string>
     <string name="hostel">Hostel</string>
+    <string name="gallery">Gallery</string>
     <string name="suggestview">Give your view</string>
     <string name="contactus">Contact us</string>
     <string name="logout">Log Out</string>
@@ -29,5 +30,16 @@
     <string name="nologin">Looks Like You need To sign Up</string>
     <string name="no_valid_domain">Your Domain is not Registered ! \n Please Contact Your Institution</string>
     <string name="no_internet">Your Device Has No Active Connections</string>
+    <string name="title_activity_nav_drawer">nav_drawer</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_drawer">drawer</string>
+    <string name="share">Share</string>
+    <string name="communicate">Communicate</string>
+    <string name="home">Home</string>
+
 
 </resources>

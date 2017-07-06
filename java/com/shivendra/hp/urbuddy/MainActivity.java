@@ -11,6 +11,10 @@ import android.view.View;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+
+// useless remove this now drawer is the main activity
+
+
 public class MainActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     @Override
@@ -28,10 +32,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(I);
         MainActivity.this.finish();
     }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.navigation_menu, menu);
-        return true;
-    }
+
+
 }

@@ -47,8 +47,12 @@
             android:name=".dialog_otp"
             android:configChanges="orientation"
             android:screenOrientation="sensor"
-            android:theme="@style/Dialog"></activity>
-        <activity android:name=".signup"></activity>
+            android:theme="@style/Dialog" />
+        <activity android:name=".signup" />
+        <activity
+            android:name=".drawer"
+            android:label="@string/title_activity_drawer"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
