@@ -38,9 +38,14 @@ public class LoginActivity extends AppCompatActivity {
         FirebaseUser currentUser = firebaseAuth.getCurrentUser();
 
         if(currentUser!=null){
-            Intent I = new Intent(getApplicationContext(),drawer.class) ;  //launch the main drawer activity
-            startActivity(I);
-            LoginActivity.this.finish();
+              if(currentUser.isEmailVerified()) {
+                  Intent I = new Intent(getApplicationContext(), drawer.class);  //launch the main drawer activity
+                  startActivity(I);
+                  LoginActivity.this.finish();
+              }
+              else{
+                  Toast.makeText(getApplicationContext(), R.string.verifyemail, Toast.LENGTH_LONG).show();
+              }
         }
     }
 
@@ -74,6 +79,24 @@ public class LoginActivity extends AppCompatActivity {
           LoginActivity.this.finish();
        }
 
+       //function to reset email
+
+    public void sendpassresetlink(View v){
+        String E = email.getText().toString().trim();
+        if(TextUtils.isEmpty(E) || !android.util.Patterns.EMAIL_ADDRESS.matcher(E).matches()){
+            Snackbar.make(v, R.string.validid, Snackbar.LENGTH_LONG).show();
+            return;
+        }
+        if(!checkdomain( E)){
+            Snackbar.make(v, R.string.no_valid_domain, Snackbar.LENGTH_LONG).show();
+            return;
+        }
+        firebaseAuth.sendPasswordResetEmail(E);
+        Snackbar.make(v, R.string.resetLink, Snackbar.LENGTH_LONG).show();
+    }
+
+
+
     private OnClickListener onClickListener = new OnClickListener() {
     @Override
     public void onClick(View v) {
@@ -94,7 +117,7 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        // check the domain address  AT THIS TIME ONLY @IIITKOTTAYAM.AC.IN WILL BE ALLOWED
+        // check the domain address  AT THIS TIME ONLY @IIITKOTTAYAM.AC.IN WILL BE ALLOWED(Usage 1/2 Another usage signup class)
         // WE CAN GIVE UPDATE TO APP BY ADDING MORE DOMAINS IN SELECTOR
 
         if(!checkdomain( E)){
@@ -123,7 +146,7 @@ public class LoginActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
                         progressDialog.dismiss();
-                        Intent I = new Intent(getApplicationContext(),MainActivity.class) ;  //launch the main activity
+                        Intent I = new Intent(getApplicationContext(),drawer.class) ;  //launch the main activity
                         startActivity(I);
                         LoginActivity.this.finish();
                     }

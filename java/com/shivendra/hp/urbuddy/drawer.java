@@ -101,6 +101,8 @@ public class drawer extends AppCompatActivity
 
         } else if (id == R.id.nav_contactus) {
 
+        }else if(id==R.id.nav_logout){
+            LogOut(getCurrentFocus());
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

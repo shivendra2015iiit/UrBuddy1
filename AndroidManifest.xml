@@ -15,6 +15,7 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -43,16 +44,31 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.shivendra.hp.urbuddy.LoginActivity" />
         </activity>
+
+        <activity
+            android:name=".signup"
+            android:label="@string/signup"
+            android:parentActivityName=".Splashscreen"
+            android:windowSoftInputMode="adjustPan"
+            android:theme="@style/AppTheme.NoActionBar" >
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.shivendra.hp.urbuddy.signup" />
+        </activity>
+
         <activity
             android:name=".dialog_otp"
             android:configChanges="orientation"
             android:screenOrientation="sensor"
             android:theme="@style/Dialog" />
-        <activity android:name=".signup" />
+
         <activity
             android:name=".drawer"
             android:label="@string/title_activity_drawer"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
     </application>
 
 </manifest>

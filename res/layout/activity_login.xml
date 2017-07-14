@@ -117,6 +117,8 @@
         android:id="@+id/forgot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:clickable="true"
+        android:onClick="sendpassresetlink"
         android:text="@string/forgot_password"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:layout_marginStart="-3dp"
@@ -128,12 +130,13 @@
         android:id="@+id/signin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:clickable="true"
         android:onClick="launchsignup"
         android:text="@string/ask_signup"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
-        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginEnd="16dp"
         app:layout_constraintRight_toRightOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

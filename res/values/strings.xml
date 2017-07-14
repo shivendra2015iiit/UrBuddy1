@@ -27,7 +27,7 @@
     <string name="fillall">Please Fill All Fields</string>
     <string name="validid">Please Enter valid Email</string>
     <string name="passlen">Password should be greater than 7 chars.</string>
-    <string name="nologin">Looks Like You need To sign Up</string>
+    <string name="nologin">Looks Like You need To sign Up.</string>
     <string name="no_valid_domain">Your Domain is not Registered ! \n Please Contact Your Institution</string>
     <string name="no_internet">Your Device Has No Active Connections</string>
     <string name="title_activity_nav_drawer">nav_drawer</string>
@@ -40,6 +40,10 @@
     <string name="share">Share</string>
     <string name="communicate">Communicate</string>
     <string name="home">Home</string>
+    <string name="confAgain">Again Confirm password</string>
+    <string name="success">Registration sucessful</string>
+    <string name="verifyemail">Verify Your Email. Click on link send to your ID</string>
+    <string name="resetLink">Reset link have been send to your email ID sucessfully</string>
 
 
 </resources>
