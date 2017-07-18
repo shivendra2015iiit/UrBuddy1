@@ -41,9 +41,16 @@
     <string name="communicate">Communicate</string>
     <string name="home">Home</string>
     <string name="confAgain">Again Confirm password</string>
-    <string name="success">Registration sucessful</string>
+    <string name="success">Registration successful</string>
     <string name="verifyemail">Verify Your Email. Click on link send to your ID</string>
-    <string name="resetLink">Reset link have been send to your email ID sucessfully</string>
+    <string name="resetLink">Reset link have been send to your email ID successfully</string>
+
+    <!--profile activity-->
+    <string name="title_activity_profile">Profile</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="choose_display_name">Choose Display Name</string>
+    <string name="personalize_app">Personalize App</string>
 
 
 </resources>

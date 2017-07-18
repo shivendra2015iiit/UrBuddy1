@@ -52,7 +52,7 @@ public class dialog_otp extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                        Intent I = new Intent(getApplicationContext(),MainActivity.class) ;  //launch the main activity
+                        Intent I = new Intent(getApplicationContext(),drawer.class) ;  //launch the main activity
                      dialog_otp.this.finish();
                 }
             }

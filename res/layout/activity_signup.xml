@@ -34,8 +34,9 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="-13dp"
         android:text="Ur Buddy"
+        android:textSize="24dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@android:color/white"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -51,7 +52,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="23dp"
+        android:layout_marginTop="9dp"
         android:background="@drawable/rounded"
         android:drawableStart="@drawable/ic_person_white_18dp"
         android:hint="@string/email"
@@ -75,7 +76,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="11dp"
+        android:layout_marginTop="9dp"
         android:layout_weight="9.23"
         android:background="@drawable/rounded"
         android:drawableStart="@drawable/ic_vpn_key_white_18dp"
@@ -133,11 +134,11 @@
         android:text="@string/signup"
         android:textColor="#c26dc3f1"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.552"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/confpassword"
-        app:layout_constraintVertical_bias="0.159" />
+        app:layout_constraintVertical_bias="0.09" />
 
 
     <TextView

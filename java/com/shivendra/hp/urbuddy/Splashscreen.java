@@ -43,12 +43,15 @@ public class Splashscreen extends Activity {
                 try {
                     int waited = 0;
                     // Splash screen pause time
-                    while (waited < 0) {             //rechange it to 4500
+                    while (waited < 4500) {              //rechange to 4500
                         sleep(100);
                         waited += 100;
                     }
                     Intent intent = new Intent(Splashscreen.this,
                             LoginActivity.class);
+
+                   /* Intent intent = new Intent(Splashscreen.this,
+                                       Profile.class);    */             //just to debug delete this line and uncomment above
                     intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                     startActivity(intent);
                     Splashscreen.this.finish();
