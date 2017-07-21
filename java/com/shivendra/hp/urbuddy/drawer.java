@@ -1,7 +1,10 @@
 package com.shivendra.hp.urbuddy;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.view.View;
@@ -13,14 +16,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.ViewSwitcher;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import java.io.IOException;
 
 public class drawer extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
          private FirebaseAuth firebaseAuth;
+         ImageView profilepic ;
+         TextView displayname;
+         TextView mail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +40,8 @@ public class drawer extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        firebaseAuth = FirebaseAuth.getInstance();
-        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -49,6 +60,37 @@ public class drawer extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        View header = navigationView.getHeaderView(0);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        profilepic = (ImageView)header.findViewById(R.id.userdp);
+        displayname = (TextView) header.findViewById(R.id.dname);
+        mail = (TextView)header.findViewById(R.id.email);
+        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+
+        String uri =currentUser.getPhotoUrl().toString();
+       int a= uri.indexOf("/");                                               //retrived  uri have one less "/" that is why adding it;
+        uri = uri.substring(0,a)+"/"+uri.substring(a,uri.length());
+        Uri dpic=Uri.parse(uri);
+        String Uname =currentUser.getDisplayName();
+        String mail_id = currentUser.getEmail();
+
+profilepic.setOnClickListener(new View.OnClickListener(){
+    @Override
+    public  void onClick(View v){
+        Intent I = new Intent(getApplicationContext(),Profile.class) ;
+        startActivity(I);
+        drawer.this.finish();
+    }
+});
+
+        if(dpic != null && Uname!=null && mail_id!=null && dpic!=null) {
+
+            profilepic.setImageURI(dpic);
+            displayname.setText(Uname);
+            mail.setText(mail_id);
+        }
+
     }
 
     @Override
@@ -109,10 +151,12 @@ public class drawer extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
     public void LogOut(View v) {
         firebaseAuth.signOut();
         Intent I = new Intent(getApplicationContext(),LoginActivity.class) ;  //loging activity
         startActivity(I);
         drawer.this.finish();
     }
+
 }

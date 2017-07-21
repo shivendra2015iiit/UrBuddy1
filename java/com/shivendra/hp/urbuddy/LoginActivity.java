@@ -39,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
 
         if(currentUser!=null){
               if(currentUser.isEmailVerified()) {
+
                   Intent I = new Intent(getApplicationContext(), drawer.class);  //launch the main drawer activity
                   startActivity(I);
                   LoginActivity.this.finish();
