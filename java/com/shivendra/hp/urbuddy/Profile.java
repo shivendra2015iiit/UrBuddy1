@@ -1,8 +1,7 @@
 package com.shivendra.hp.urbuddy;
 
-import android.app.ActionBar;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
+
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.NonNull;
@@ -17,7 +16,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -43,7 +41,7 @@ public class Profile extends AppCompatActivity {
         Window window = this.getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        window.setStatusBarColor(ContextCompat.getColor(this,R.color.colorAccent));
+        window.setStatusBarColor(ContextCompat.getColor(this,R.color.green));
 
 
     }
@@ -108,4 +106,17 @@ public class Profile extends AppCompatActivity {
                 });
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent I = new Intent(getApplicationContext(),drawer.class) ;
+        startActivity(I);
+        Profile.this.finish();
+    }
+    public void cancel(final View view){
+        Intent I = new Intent(getApplicationContext(),drawer.class) ;
+        startActivity(I);
+        Profile.this.finish();
+    }
 }
+

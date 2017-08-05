@@ -122,6 +122,11 @@ public class signup extends AppCompatActivity {
                 }
             });
         }
+        else{
+            progressDialog.dismiss();
+            Toast.makeText(getApplicationContext(), R.string.no_internet, Toast.LENGTH_LONG).show();
+            // notify user you are not online
+        }
     }
     // function to varify domains
     public boolean checkdomain(String email) {

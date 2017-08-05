@@ -2,7 +2,7 @@
     <string name="app_name">Ur Buddy</string>
 
     <string name="mess">Mess</string>
-    <string name="acadmic">Acadmic</string>
+    <string name="academic">Academic</string>
     <string name="hostel">Hostel</string>
     <string name="gallery">Gallery</string>
     <string name="suggestview">Give your view</string>
@@ -51,6 +51,9 @@
     <string name="cancel">Cancel</string>
     <string name="choose_display_name">Choose Display Name</string>
     <string name="personalize_app">Personalize App</string>
+    <string name="dev_email_id">shivendra15@iiitkottayam.ac.in</string>
+    <string name="dev_mob">09455428103</string>
+    <string name="team_ur_buddy">Team UR BUDDY</string>
 
 
 </resources>

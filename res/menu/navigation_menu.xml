@@ -4,7 +4,7 @@
     android:title="@string/mess"
     />
     <item android:id="@+id/nav_acadmic"
-        android:title="@string/acadmic"
+        android:title="@string/academic"
         />
     <item android:id="@+id/nav_hostel"
         android:title="@string/hostel"

@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -47,7 +49,7 @@ public class drawer extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Feedback", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
@@ -91,6 +93,19 @@ profilepic.setOnClickListener(new View.OnClickListener(){
             mail.setText(mail_id);
         }
 
+
+        ///setting default fragment to home
+        Fragment fragment = null;
+        fragment = new home();
+        if(fragment!=null){
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.content_frame,fragment);
+            ft.commit();
+        }
+
+
+
+
     }
 
     @Override
@@ -99,7 +114,8 @@ profilepic.setOnClickListener(new View.OnClickListener(){
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+
+           super.onBackPressed();
         }
     }
 
@@ -122,29 +138,43 @@ profilepic.setOnClickListener(new View.OnClickListener(){
             return true;
         }
 
+
         return super.onOptionsItemSelected(item);
     }
+
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+        Fragment fragment = null;
+
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
-        if (id == R.id.nav_mess) {
-            // Handle the camera action
+          if(id == R.id.nav_home){
+              fragment = new home();
+        }
+        else if (id == R.id.nav_mess) {
+              fragment = new mess();
         } else if (id == R.id.nav_acadmic) {
-
+              fragment = new acadmic();
         } else if (id == R.id.nav_gallery) {
+              fragment = new gallery();
 
         } else if (id == R.id.nav_hostel) {
+              fragment = new hostel();
 
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_contactus) {
+            fragment = new contactus();
 
         }else if(id==R.id.nav_logout){
             LogOut(getCurrentFocus());
+        }
+        if(fragment!=null){
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.content_frame,fragment);
+            ft.commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

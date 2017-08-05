@@ -13,7 +13,7 @@
         <item
             android:id="@+id/nav_acadmic"
             android:icon="@drawable/ic_school_black_36dp"
-            android:title="@string/acadmic" />
+            android:title="@string/academic" />
 
         <item
             android:id="@+id/nav_hostel"
