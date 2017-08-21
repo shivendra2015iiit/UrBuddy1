@@ -99,10 +99,10 @@ public class signup extends AppCompatActivity {
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
         if (activeNetwork != null) {
-            firebaseAuth.createUserWithEmailAndPassword(Email,pass).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+             firebaseAuth.createUserWithEmailAndPassword(Email,pass).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (task.isComplete()) {
+                    if (task.isSuccessful()) {
                         Snackbar.make(v, R.string.success , Snackbar.LENGTH_SHORT).show();
                          firebaseAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
                              @Override
@@ -119,6 +119,11 @@ public class signup extends AppCompatActivity {
                          });;
 
                     }
+                    else{
+                        Snackbar.make(v,"Already registered" , Snackbar.LENGTH_SHORT).show();
+
+                    }
+
                 }
             });
         }
