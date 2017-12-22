@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -22,8 +23,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 import java.io.IOException;
 
@@ -69,13 +73,14 @@ public class drawer extends AppCompatActivity
         displayname = (TextView) header.findViewById(R.id.dname);
         mail = (TextView)header.findViewById(R.id.email);
         FirebaseUser currentUser = firebaseAuth.getCurrentUser();
-
+        
         String uri =currentUser.getPhotoUrl().toString();
        int a= uri.indexOf("/");                                               //retrived  uri have one less "/" that is why adding it;
         uri = uri.substring(0,a)+"/"+uri.substring(a,uri.length());
         Uri dpic=Uri.parse(uri);
         String Uname =currentUser.getDisplayName();
         String mail_id = currentUser.getEmail();
+
 
 profilepic.setOnClickListener(new View.OnClickListener(){
     @Override
@@ -187,6 +192,16 @@ profilepic.setOnClickListener(new View.OnClickListener(){
         Intent I = new Intent(getApplicationContext(),LoginActivity.class) ;  //loging activity
         startActivity(I);
         drawer.this.finish();
+    }
+
+    public void showmenu(View v){
+
+    }
+    public void booksnacks(View v){
+        Intent i = new Intent(drawer.this,Booksnacks.class);
+        startActivity(i);
+        drawer.this.finish();
+
     }
 
 }

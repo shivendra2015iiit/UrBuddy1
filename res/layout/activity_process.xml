@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.shivendra.hp.urbuddy.processActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text=" Snacks: "
+        android:id="@+id/snacks"
+        android:layout_alignParentTop="true" />
+
+        <NumberPicker
+            android:id="@+id/snacksquantity"
+            android:layout_width="wrap_content"
+            android:layout_below="@id/snacks"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"/>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text=" Beverages : "
+            android:id="@+id/tea"
+            android:layout_alignParentTop="true" />
+
+        <NumberPicker
+            android:layout_below="@id/tea"
+            android:id="@+id/teaquantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"/>
+
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>

@@ -29,6 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
+            android:scaleType="fitXY"
             android:src="@drawable/dpoption7"
             tools:layout_editor_absoluteX="38dp"
             tools:layout_editor_absoluteY="186dp" />

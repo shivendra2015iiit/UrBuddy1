@@ -3,6 +3,9 @@ package com.shivendra.hp.urbuddy;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.view.View;
@@ -29,7 +32,6 @@ public class Splashscreen extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
        View decorView = getWindow().getDecorView();
 // Hide the status bar.
        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
@@ -43,7 +45,7 @@ public class Splashscreen extends Activity {
                 try {
                     int waited = 0;
                     // Splash screen pause time
-                    while (waited < 0) {              //rechange to 4500
+                    while (waited < 4500) {              //rechange to 4500
                         sleep(100);
                         waited += 100;
                     }
@@ -67,4 +69,5 @@ public class Splashscreen extends Activity {
 
         splashTread.start();
     }
+
 }
