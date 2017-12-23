@@ -18,23 +18,18 @@
         android:layout_height="60dp"
          android:innerRadius="0dp"
         android:shape="ring"
-        android:thicknessRatio="1.9"
-         app:cardCornerRadius="30dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="321dp">
+        app:cardCornerRadius="19dp"
+        app:cardElevation="6dp">
 
         <ImageView
             android:id="@+id/userdp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:scaleType="fitXY"
-            android:src="@drawable/dpoption7"
-            tools:layout_editor_absoluteX="38dp"
-            tools:layout_editor_absoluteY="186dp" />
+            android:src="@drawable/dpoption7" />
     </android.support.v7.widget.CardView>
-
 
 
     <TextView

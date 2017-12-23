@@ -2,6 +2,7 @@ package com.shivendra.hp.urbuddy;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -45,7 +46,18 @@ public class LoginActivity extends AppCompatActivity {
                   LoginActivity.this.finish();
               }
               else{
-                  Toast.makeText(getApplicationContext(), R.string.verifyemail, Toast.LENGTH_LONG).show();
+                  ProgressDialog.Builder pd = new ProgressDialog.Builder(this);
+                  pd.setMessage(R.string.verifyemail);
+                  pd.setCancelable(false);
+                  pd.setPositiveButton("Resend mail", new DialogInterface.OnClickListener() {
+                      @Override
+                      public void onClick(DialogInterface dialog, int which) {
+                          firebaseAuth.getCurrentUser().sendEmailVerification();
+
+                      }
+                  });
+                  pd.show();
+
               }
         }
     }
@@ -140,16 +152,36 @@ public class LoginActivity extends AppCompatActivity {
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
         if (activeNetwork != null) {
+
+
+
             // connected to the internet
             // everthing is syntaxtically allright
             firebaseAuth.signInWithEmailAndPassword(E,pass).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
-                        progressDialog.dismiss();
-                        Intent I = new Intent(getApplicationContext(),drawer.class) ;  //launch the main activity
-                        startActivity(I);
-                        LoginActivity.this.finish();
+                        if(firebaseAuth.getCurrentUser().isEmailVerified()) {
+                            progressDialog.dismiss();
+                            Intent I = new Intent(getApplicationContext(), drawer.class);  //launch the main activity
+                            startActivity(I);
+                            LoginActivity.this.finish();
+                        }
+                        else{
+                            progressDialog.dismiss();
+                            ProgressDialog.Builder pd = new ProgressDialog.Builder(LoginActivity.this);
+                            pd.setMessage(R.string.verifyemail);
+                            pd.setCancelable(false);
+                            pd.setPositiveButton("Resend mail", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    firebaseAuth.getCurrentUser().sendEmailVerification();
+
+                                }
+                            });
+                            pd.show();
+
+                        }
                     }
                     else{
                         progressDialog.dismiss();

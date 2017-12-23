@@ -69,17 +69,29 @@ public class drawer extends AppCompatActivity
         View header = navigationView.getHeaderView(0);
 
         firebaseAuth = FirebaseAuth.getInstance();
-        profilepic = (ImageView)header.findViewById(R.id.userdp);
+        profilepic = (ImageView) header.findViewById(R.id.userdp);
         displayname = (TextView) header.findViewById(R.id.dname);
         mail = (TextView)header.findViewById(R.id.email);
         FirebaseUser currentUser = firebaseAuth.getCurrentUser();
-        
+
+        String mail_id = currentUser.getEmail();
+
+
+        profilepic.setImageResource(R.drawable.dpoption8);
+        displayname.setText("Ur Buddy");
+        mail.setText(mail_id);
+
+        // for time being no personalization
+
+      /*
         String uri =currentUser.getPhotoUrl().toString();
        int a= uri.indexOf("/");                                               //retrived  uri have one less "/" that is why adding it;
         uri = uri.substring(0,a)+"/"+uri.substring(a,uri.length());
         Uri dpic=Uri.parse(uri);
         String Uname =currentUser.getDisplayName();
         String mail_id = currentUser.getEmail();
+
+
 
 
 profilepic.setOnClickListener(new View.OnClickListener(){
@@ -97,6 +109,15 @@ profilepic.setOnClickListener(new View.OnClickListener(){
             displayname.setText(Uname);
             mail.setText(mail_id);
         }
+
+
+
+
+
+        */
+        //
+
+
 
 
         ///setting default fragment to home
