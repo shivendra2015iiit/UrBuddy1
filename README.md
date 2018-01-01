@@ -15,7 +15,7 @@ appversion: 0/1    where 0 means app is inactive,1 means app is active don't rem
 and dont off link sharing.
 
 3) Database for home in firebase
- \home\<some unique id "I prefer date ">\Text : for text
+ \home\<Priority>\Text : for text
                                          \Image : for image
                                          \ Heading : for heading
  
