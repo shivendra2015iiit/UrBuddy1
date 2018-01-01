@@ -52,7 +52,7 @@ public class homeAdapter extends RecyclerView.Adapter<homeHolder> {
 
         }
         try {
-            Glide.with(c).using(new FirebaseImageLoader()).load(imagesRef).centerCrop().override(400, 200).into(holder.image);
+            Glide.with(c).using(new FirebaseImageLoader()).load(imagesRef).into(holder.image);
         }catch (Exception e){
 
         }

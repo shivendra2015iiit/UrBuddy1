@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class photoCollection {
     public final static ArrayList<photo> photos = new ArrayList<>();
     public static ArrayList<photo> getphotocollection(DataSnapshot ds) {
-
+        photos.clear();
         photo m = new photo();
 
 

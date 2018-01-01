@@ -13,8 +13,9 @@ import java.util.ArrayList;
 public class panelCollection {
     public final static ArrayList<panel> panels = new ArrayList<>();
     public static ArrayList<panel> getpanelcollection(DataSnapshot ds) {
-
+        panels.clear();
         panel m = new panel();
+
 
         for (DataSnapshot d : ds.getChildren()){
 
@@ -31,10 +32,10 @@ public class panelCollection {
                 }
                 try{
                 m.setImageurl(d.child("Image").getValue().toString());
-                panels.add(m);
             }catch (Exception e) {
                     Log.w("Tag : ","No image part in home card");
                 }
+            panels.add(m);
 
         }
 

@@ -47,7 +47,7 @@ public class galleryAdapter extends RecyclerView.Adapter<galleryHolder> {
 
         imagesRef = storageRef.child("gallery/"+Photo.get(position).getPhotoUrl());
           holder.name.setText(Photo.get(position).getName());
-        Glide.with(c).using(new FirebaseImageLoader()).load(imagesRef).centerCrop().override(300,300).placeholder(R.drawable.loading).into(holder.photo);
+        Glide.with(c).using(new FirebaseImageLoader()).load(imagesRef).placeholder(R.drawable.loading).into(holder.photo);
 
     }
 
