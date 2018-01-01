@@ -1,6 +1,7 @@
 # UrBuddy
-This is an android app developing for the use of IIIT kottayam's Students account management. Mess hostel and acandmic accounts + extra 
-functionality to apply for leave application online and get instant notifiacations about events
+
+This is an android app developed by me for the use of IIIT kottayam's Students and Related people. Mess hostel and acandmic things + extra 
+functionality ,to apply for leave application online(Still needed to be added) and get instant notifiacations about events
 
 1) Appsuport database in firebase contains 
 appversion: 0/1    where 0 means app is inactive,1 means app is active don't remove app version otherwise app will again get active
