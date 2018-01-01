@@ -1,5 +1,10 @@
 # UrBuddy
+<<>>
 
+FOR ANY MAKING CHANGES IN CODE OR DEVELOPING AND UPGRADING THE SAME CODE PLEASE TAKE MY PERMISSION. DO NOT COPY WITHOUT PERMISSION 
+.JUST SEND A SIMPLE MAIL AT shivendra15@iiitkottayam.ac.in and shivam9935@gmail.com  . MOST PROBABLY YOU WILL GET A POSITIVE RESPONCE XD.
+
+<<>>
 This is an android app developed by me for the use of IIIT kottayam's Students and Related people. Mess hostel and acandmic things + extra 
 functionality ,to apply for leave application online(Still needed to be added) and get instant notifiacations about events
 
