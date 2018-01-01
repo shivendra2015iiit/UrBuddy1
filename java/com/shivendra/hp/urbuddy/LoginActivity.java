@@ -8,13 +8,16 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -24,13 +27,20 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity {
     EditText email;
     EditText password;
     Button login;
     ProgressDialog progressDialog;
+    ProgressDialog pg;
     private FirebaseAuth firebaseAuth;
+    final boolean[] s = {false};
 
     @Override
     public void onStart() {
@@ -38,27 +48,28 @@ public class LoginActivity extends AppCompatActivity {
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = firebaseAuth.getCurrentUser();
 
-        if(currentUser!=null){
-              if(currentUser.isEmailVerified()) {
+        if(currentUser!=null) {
+            if (currentUser.isEmailVerified()) {
 
-                  Intent I = new Intent(getApplicationContext(), drawer.class);  //launch the main drawer activity
-                  startActivity(I);
-                  LoginActivity.this.finish();
-              }
-              else{
-                  ProgressDialog.Builder pd = new ProgressDialog.Builder(this);
-                  pd.setMessage(R.string.verifyemail);
-                  pd.setCancelable(false);
-                  pd.setPositiveButton("Resend mail", new DialogInterface.OnClickListener() {
-                      @Override
-                      public void onClick(DialogInterface dialog, int which) {
-                          firebaseAuth.getCurrentUser().sendEmailVerification();
+                /////////////////////////////////////////////
 
-                      }
-                  });
-                  pd.show();
+                Intent I = new Intent(getApplicationContext(), drawer.class);  //launch the main drawer activity
+                startActivity(I);
+                LoginActivity.this.finish();
+            } else {
+                ProgressDialog.Builder pd = new ProgressDialog.Builder(this);
+                pd.setMessage(R.string.verifyemail);
+                pd.setCancelable(false);
+                pd.setPositiveButton("Resend mail", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        firebaseAuth.getCurrentUser().sendEmailVerification();
 
-              }
+                    }
+                });
+                pd.show();
+
+            }
         }
     }
 
@@ -71,6 +82,7 @@ public class LoginActivity extends AppCompatActivity {
         //Initializing firebase auth object
         firebaseAuth =FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(this);
+        pg = new ProgressDialog(this);
 
         email = (EditText)findViewById(R.id.email);
         password = (EditText)findViewById(R.id.password);
@@ -153,8 +165,7 @@ public class LoginActivity extends AppCompatActivity {
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
         if (activeNetwork != null) {
 
-
-
+            ///////////////////////////////
             // connected to the internet
             // everthing is syntaxtically allright
             firebaseAuth.signInWithEmailAndPassword(E,pass).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
@@ -211,6 +222,8 @@ public class LoginActivity extends AppCompatActivity {
         }
             return false;
     }
+
+
 
    }
 

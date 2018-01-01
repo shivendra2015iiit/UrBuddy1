@@ -13,6 +13,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/logo"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -32,6 +33,7 @@
             android:name=".LoginActivity"
             android:label="@string/title_activity_login"
             android:parentActivityName=".Splashscreen"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -41,6 +43,7 @@
             android:name=".signup"
             android:label="@string/signup"
             android:parentActivityName=".Splashscreen"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan">
             <meta-data
@@ -48,24 +51,25 @@
                 android:value="com.shivendra.hp.urbuddy.signup" />
         </activity>
         <activity
-            android:name=".dialog_otp"
-            android:configChanges="orientation"
-            android:screenOrientation="sensor"
-            android:theme="@style/Dialog" />
-        <activity
             android:name=".drawer"
             android:label="@string/title_activity_drawer"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Profile"
             android:label="Profile"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".Booksnacks"
             android:label="@string/title_activity_booksnacks"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".processActivity"></activity>
+        <activity
+            android:name=".processActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ValidateAppVersion"></activity>
     </application>
 
 </manifest>

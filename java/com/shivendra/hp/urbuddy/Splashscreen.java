@@ -1,20 +1,13 @@
 package com.shivendra.hp.urbuddy;
 
-import android.app.ActionBar;
+
 import android.app.Activity;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
+
 
 public class Splashscreen extends Activity {
     public void onAttachedToWindow() {
@@ -34,6 +27,7 @@ public class Splashscreen extends Activity {
         super.onCreate(savedInstanceState);
        View decorView = getWindow().getDecorView();
 // Hide the status bar.
+
        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);
   setContentView(R.layout.activity_splashscreen);
@@ -50,7 +44,7 @@ public class Splashscreen extends Activity {
                         waited += 100;
                     }
                     Intent intent = new Intent(Splashscreen.this,
-                            LoginActivity.class);
+                            ValidateAppVersion.class);
 
                    /* Intent intent = new Intent(Splashscreen.this,
                                        Profile.class);    */             //just to debug delete this line and uncomment above

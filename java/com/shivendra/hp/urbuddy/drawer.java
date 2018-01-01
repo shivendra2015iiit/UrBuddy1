@@ -1,7 +1,9 @@
 package com.shivendra.hp.urbuddy;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -10,6 +12,9 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -19,22 +24,33 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
+import com.bumptech.glide.Glide;
+import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.io.IOException;
+
+import uk.co.senab.photoview.PhotoViewAttacher;
 
 public class drawer extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
          private FirebaseAuth firebaseAuth;
+         private FirebaseStorage storage = FirebaseStorage.getInstance();
+         private StorageReference storageReference =storage.getReference();
+         private StorageReference messmenureference = storageReference.child("messmenu.jpg");
          ImageView profilepic ;
          TextView displayname;
          TextView mail;
@@ -78,7 +94,7 @@ public class drawer extends AppCompatActivity
 
 
         profilepic.setImageResource(R.drawable.dpoption8);
-        displayname.setText("Ur Buddy");
+        displayname.setText(R.string.title_activity_splashscreen);
         mail.setText(mail_id);
 
         // for time being no personalization
@@ -216,12 +232,39 @@ profilepic.setOnClickListener(new View.OnClickListener(){
     }
 
     public void showmenu(View v){
-
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+        this.getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+        int width = displaymetrics.widthPixels;
+        int height = displaymetrics.heightPixels;
+        loadPhoto(messmenureference,width,height);
     }
     public void booksnacks(View v){
         Intent i = new Intent(drawer.this,Booksnacks.class);
         startActivity(i);
         drawer.this.finish();
+
+    }
+
+    private void loadPhoto( StorageReference reference,int width, int height) {
+
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        //dialog.setContentView(R.layout.custom_fullimage_dialog);
+        LayoutInflater inflater = (LayoutInflater) this.getSystemService(LAYOUT_INFLATER_SERVICE);
+        View layout = inflater.inflate(R.layout.custom_fullimage_dialoge,
+                (ViewGroup) findViewById(R.id.layout_root));
+        ImageView image = (ImageView) layout.findViewById(R.id.fullimage);
+        image.setScaleType(ImageView.ScaleType.FIT_XY);
+
+        Glide.with(this).using(new FirebaseImageLoader()).load(reference).placeholder(R.drawable.loading).into(image);
+        PhotoViewAttacher pd = new PhotoViewAttacher(image);
+        pd.setZoomable(true);
+        image.getLayoutParams().height = height;
+        image.getLayoutParams().width = width;
+        image.requestLayout();
+        dialog.setContentView(layout);
+        dialog.show();
 
     }
 
