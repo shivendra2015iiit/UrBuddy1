@@ -22,3 +22,6 @@ and dont off link sharing.
 4) Storage for home is in home with image name same as in database home\Image value.
 
 5) Share app same point 2 folders link is given so in that folder we have to keep the latest working app.
+
+6) Gallery database
+    GalleryData\<serialnumberofimage><space><Title of Image>    and it's value is imagename in storage database  
