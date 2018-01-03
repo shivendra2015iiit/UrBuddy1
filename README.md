@@ -31,4 +31,4 @@ and dont off link sharing.
                   Polls\<timestamp in millisecond when it was created>\Thought   :      stores the thought
                   
 8) Reward video database
-                 Rewards\UID : it's value contains reward point earned.
+                 Rewards\<UID> : it's value contains reward point earned.
