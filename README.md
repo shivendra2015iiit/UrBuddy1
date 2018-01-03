@@ -32,3 +32,13 @@ and dont off link sharing.
                   
 8) Reward video database
                  Rewards\<UID> : it's value contains reward point earned.
+
+9) Acadmics is hardcodded mostly and needed more work 
+Storage structure 
+a folder acadmics with images: ap1.jpg : annual planner first page
+                              ap2.jpg : annual planner second page
+                              tt1.jpg : time table for 1 st year
+                               tt2.jpg : time table for 2 nd year
+                                tt3.jpg : time table for 3 rd year
+                                 tt4.jpg : time table for 4 th year
+                           
