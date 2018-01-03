@@ -3,6 +3,7 @@ package com.shivendra.hp.urbuddy;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -64,7 +65,7 @@ public class gallery extends Fragment {
         pd.setCancelable(true);
         pd.show();
         rv = (RecyclerView) v.findViewById(R.id.rv_gallery);
-        rv.setLayoutManager(new GridLayoutManager(getContext(),2));
+        rv.setLayoutManager(new LinearLayoutManager(getContext()));
         mRootRef = FirebaseDatabase.getInstance().getReferenceFromUrl("https://ur-buddy.firebaseio.com/GalleryData");
 
         mRootRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -100,7 +101,6 @@ public class gallery extends Fragment {
         return  v;
     }
     private void loadPhoto(StorageReference reference, int width, int height) {
-
         final Dialog dialog = new Dialog(getActivity());
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
@@ -117,6 +117,5 @@ public class gallery extends Fragment {
         image.requestLayout();
         dialog.setContentView(layout);
         dialog.show();
-
     }
 }

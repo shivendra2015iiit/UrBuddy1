@@ -53,7 +53,7 @@
     <string name="personalize_app">Personalize App</string>
     <string name="dev_email_id">shivendra15@iiitkottayam.ac.in</string>
     <string name="dev_mob">09455428103</string>
-    <string name="team_ur_buddy">Team UR BUDDY</string>
+    <string name="team_ur_buddy">UR BUDDY DEV</string>
     <string name="mess_menu">MESS MENU</string>
     <string name="book_snacks">BOOK SNACKS</string>
     <string name="title_activity_booksnacks">Booksnacks</string>
@@ -146,6 +146,7 @@
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
+    <string name="earn_reward">Earn Reward</string>
 
 
 </resources>

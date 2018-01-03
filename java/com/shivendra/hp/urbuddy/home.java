@@ -46,8 +46,8 @@ public class home extends Fragment {
         pd.show();
         rv = (RecyclerView) v.findViewById(R.id.rv_home);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
+        rv.setNestedScrollingEnabled(false);
         mRootRef = FirebaseDatabase.getInstance().getReferenceFromUrl("https://ur-buddy.firebaseio.com/home");
-
         mRootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

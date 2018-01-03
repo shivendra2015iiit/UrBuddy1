@@ -2,18 +2,11 @@ package com.shivendra.hp.urbuddy;
 
 import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.util.DisplayMetrics;
-import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -28,17 +21,15 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.ViewSwitcher;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-import java.io.IOException;
 
 import uk.co.senab.photoview.PhotoViewAttacher;
 
@@ -61,7 +52,8 @@ public class drawer extends AppCompatActivity
         setSupportActionBar(toolbar);
 
 
-
+//ad banner//
+     //
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -139,15 +131,24 @@ profilepic.setOnClickListener(new View.OnClickListener(){
 
 
     }
-
+    private static final int TIME_INTERVAL = 1500; // # milliseconds, desired time passed between two back presses.
+    private long mBackPressed;
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
+            if (mBackPressed + TIME_INTERVAL > System.currentTimeMillis())
+            {
+                super.onBackPressed();
+                return;
+            }
+            else { Toast.makeText(getBaseContext(), "Tap back button once again exit", Toast.LENGTH_SHORT).show(); }
 
-           super.onBackPressed();
+            mBackPressed = System.currentTimeMillis();
+
+
         }
     }
 
@@ -166,9 +167,7 @@ profilepic.setOnClickListener(new View.OnClickListener(){
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+
 
 
         return super.onOptionsItemSelected(item);
@@ -192,12 +191,34 @@ profilepic.setOnClickListener(new View.OnClickListener(){
         } else if (id == R.id.nav_gallery) {
               fragment = new gallery();
 
-        } else if (id == R.id.nav_hostel) {
+        } /*else if (id == R.id.nav_hostel) {     // when we add hostel fragment in future
               fragment = new hostel();
 
-        } else if (id == R.id.nav_share) {
+        }*/
+        else if(id == R.id.nav_rewardvideo) {
 
-        } else if (id == R.id.nav_contactus) {
+              Intent i = new Intent(drawer.this,RewardedAdd.class);
+              startActivity(i);
+              drawer.this.finish();
+
+          }else if(id ==R.id.nav_suggestview){
+              fragment = new polls();
+          }
+
+        else if (id == R.id.nav_share) {
+              try {
+                  Intent i = new Intent(Intent.ACTION_SEND);
+                  i.setType("text/plain");
+                  i.putExtra(Intent.EXTRA_SUBJECT, "Ur Buddy V 2.1.1");
+                  String sAux ;
+                  sAux ="https://drive.google.com/open?id=1UTx5XuIPV7VcGP-LL97eP8-JSXm_Ujzm";
+                  i.putExtra(Intent.EXTRA_TEXT, sAux);
+                  startActivity(Intent.createChooser(i, "choose one"));
+              } catch(Exception e) {
+                  //e.toString();
+              }
+
+          } else if (id == R.id.nav_contactus) {
             fragment = new contactus();
 
         }else if(id==R.id.nav_logout){
@@ -257,5 +278,7 @@ profilepic.setOnClickListener(new View.OnClickListener(){
         dialog.show();
 
     }
+
+
 
 }

@@ -15,10 +15,14 @@
             android:icon="@drawable/ic_school_black_36dp"
             android:title="@string/academic" />
 
-        <item
+       <!-- <item
             android:id="@+id/nav_hostel"
             android:icon="@drawable/ic_airline_seat_individual_suite_black_36dp"
-            android:title="@string/hostel" />
+            android:title="@string/hostel" />-->
+        <item
+            android:id="@+id/nav_rewardvideo"
+            android:icon="@drawable/ic_card_giftcard_black_36dp"
+            android:title="@string/earn_reward"/>
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_gallery"

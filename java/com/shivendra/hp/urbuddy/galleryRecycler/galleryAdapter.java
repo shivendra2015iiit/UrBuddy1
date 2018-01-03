@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -17,6 +18,7 @@ import com.shivendra.hp.urbuddy.galleryData.photo;
 import com.shivendra.hp.urbuddy.mData.menu;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by Shivendra HP on 27-12-2017.
@@ -33,6 +35,7 @@ public class galleryAdapter extends RecyclerView.Adapter<galleryHolder> {
     public galleryAdapter(Context c ,ArrayList<photo> Photo) {
         this.c = c;
         this.Photo = Photo;
+        Collections.reverse(this.Photo);
 
     }
     @Override
@@ -47,7 +50,7 @@ public class galleryAdapter extends RecyclerView.Adapter<galleryHolder> {
 
         imagesRef = storageRef.child("gallery/"+Photo.get(position).getPhotoUrl());
           holder.name.setText(Photo.get(position).getName());
-        Glide.with(c).using(new FirebaseImageLoader()).load(imagesRef).placeholder(R.drawable.loading).into(holder.photo);
+        Glide.with(c).using(new FirebaseImageLoader()).load(imagesRef).diskCacheStrategy(DiskCacheStrategy.NONE).placeholder(R.drawable.loading).into(holder.photo);
 
     }
 

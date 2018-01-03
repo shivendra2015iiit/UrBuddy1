@@ -14,6 +14,7 @@ import com.shivendra.hp.urbuddy.R;
 import com.shivendra.hp.urbuddy.homeData.panel;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by Shivendra HP on 01-01-2018.
@@ -28,6 +29,7 @@ public class homeAdapter extends RecyclerView.Adapter<homeHolder> {
     public homeAdapter(Context c, ArrayList<panel> tabs){
         this.c = c;
         this.tabs = tabs;
+        Collections.reverse(this.tabs);
     }
 
     @Override
