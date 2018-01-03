@@ -25,3 +25,10 @@ and dont off link sharing.
 
 6) Gallery database
     GalleryData\<serialnumberofimage><space><Title of Image>    and it's value is imagename in storage database  
+ 
+7) Polls databse structure 
+                  Polls\<timestamp in millisecond when it was created>\Positive  :   who voted yes
+                  Polls\<timestamp in millisecond when it was created>\Thought   :      stores the thought
+                  
+8) Reward video database
+                 Rewards\UID : it's value contains reward point earned.
