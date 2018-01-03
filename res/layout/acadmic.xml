@@ -2,9 +2,82 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
+   <ScrollView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+           <TextView
+               android:id="@+id/annualplannertext"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:textAppearance="?android:attr/textAppearanceLarge"
+               android:text="Annual Planner 2018"/>
 <ImageView
     android:id="@+id/annualplanner"
+    android:layout_below="@+id/annualplannertext"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:src="@drawable/bg2"/>
+    <ImageView
+        android:id="@+id/annualplanner1"
+        android:layout_below="@+id/annualplanner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/bg2"/>
+           <TextView
+               android:id="@+id/tt11"
+               android:layout_below="@+id/annualplanner1"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="Time Table First Year"
+               android:textAppearance="?android:attr/textAppearanceLarge"/>
+    <ImageView
+        android:id="@+id/ttfirst"
+        android:layout_below="@+id/tt11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/bg2"/>
+           <TextView
+               android:id="@+id/tt12"
+               android:layout_below="@id/ttfirst"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:textAppearance="?android:attr/textAppearanceLarge"
+               android:text="Time Table Second Year"/>
+    <ImageView
+        android:id="@+id/ttsecond"
+        android:layout_below="@id/tt12"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/bg2"/>
+           <TextView
+               android:id="@+id/tt13"
+               android:layout_below="@id/ttsecond"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:textAppearance="?android:attr/textAppearanceLarge"
+               android:text="Time Table Third Year"/>
+    <ImageView
+        android:id="@+id/ttthird"
+        android:layout_below="@id/tt13"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/bg2"/>
+           <TextView
+               android:id="@+id/tt14"
+               android:layout_below="@id/ttthird"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:textAppearance="?android:attr/textAppearanceLarge"
+               android:text="Time Table Fourth Year"/>
+    <ImageView
+        android:id="@+id/ttfourth"
+        android:layout_below="@id/tt14"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/bg2"/>
+       </RelativeLayout>
+    </ScrollView>
 </LinearLayout>
