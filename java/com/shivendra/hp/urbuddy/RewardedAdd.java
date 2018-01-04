@@ -25,6 +25,7 @@ public class RewardedAdd extends AppCompatActivity implements RewardedVideoAdLis
     private DatabaseReference mRewardRef;
     private FirebaseAuth firebaseAuth;
 
+    private int i =0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,18 +69,23 @@ public class RewardedAdd extends AppCompatActivity implements RewardedVideoAdLis
                 new AdRequest.Builder().build());
     }
     public void playvideo(View v){
+        i=0;
         if (mRewardedVideoAd.isLoaded()) {
             mRewardedVideoAd.show();
+
         }
         else{
              Toast.makeText(this,"Patience Your video is Loading ",Toast.LENGTH_SHORT).show();
+
         }
     }
 
     @Override
     public void onRewardedVideoAdLoaded() {
-
-        mRewardedVideoAd.show();
+         if(i==0) {
+             mRewardedVideoAd.show();
+             i=1;
+         }
 
     }
 

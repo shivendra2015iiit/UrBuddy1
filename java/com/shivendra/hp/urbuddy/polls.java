@@ -104,21 +104,23 @@ public class polls extends Fragment {
                 for (DataSnapshot d : dataSnapshot.getChildren()){
                     long time = System.currentTimeMillis()-Long.parseLong(d.getKey());
                     long days = TimeUnit.MILLISECONDS.toDays(time);
-                    if(d.child("UID").getValue().toString().equals(currentUser.getUid())){
-                        if(days<1){
-                            button.setVisibility(View.INVISIBLE);
-                            thoughtedit.setText("You can only post one thought per day.");
-                            thoughtedit.setFocusable(false);
-                            thoughtedit.setClickable(false);
-                        }else{
-                            button.setVisibility(View.VISIBLE);
-                            thoughtedit.setFocusable(true);
-                            thoughtedit.setClickable(true);
+                    try {
+                        if (d.child("UID").getValue().toString().equals(currentUser.getUid())) {
+                            if (days < 1) {
+                                button.setVisibility(View.INVISIBLE);
+                                thoughtedit.setText("You can only post one thought per day.");
+                                thoughtedit.setFocusable(false);
+                                thoughtedit.setClickable(false);
+                            } else {
+                                button.setVisibility(View.VISIBLE);
+                                thoughtedit.setFocusable(true);
+                                thoughtedit.setClickable(true);
+                            }
                         }
-                    }
-                        if(days>7){                                                          // avoiding for stop growing of database
+                        if (days > 7) {                                                          // avoiding for stop growing of database
                             mpollsRef.child(d.getKey()).removeValue();
                         }
+                    }catch (Exception e){}
                 }
                     adapter = new suggestionAdapter(getActivity(), thoughtCollection.getthoughtcollection(dataSnapshot, currentUser.getUid()));
                     rv.setAdapter(adapter);
