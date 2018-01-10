@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -76,7 +77,7 @@ public class polls extends Fragment {
             {
                 final ProgressDialog pd = new ProgressDialog(getActivity());
                 pd.setMessage("Posting...");
-                pd.setCancelable(false);
+                pd.setCancelable(true);
                 pd.show();
                 if(thoughtedit.getText().toString().trim().equals("")){
                     pd.dismiss();
@@ -85,13 +86,15 @@ public class polls extends Fragment {
                      final long time = System.currentTimeMillis();
                     mpollsRef.child(time+"").child("Thought").setValue(thoughtedit.getText().toString().trim());
 
-                    mpollsRef.child(time+"").child("UID").setValue(firebaseAuth.getUid()).addOnCompleteListener(getActivity(), new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        Toast.makeText(getActivity(),"Successfully posted ! ",Toast.LENGTH_SHORT).show();
-                        thoughtedit.getText().clear();
-                        pd.dismiss();
-                    }
+                    mpollsRef.child(time+"").child("UID").setValue(firebaseAuth.getUid()).addOnSuccessListener(getActivity(), new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Toast.makeText(getActivity(),"Successfully posted ! ",Toast.LENGTH_SHORT).show();
+                            thoughtedit.getText().clear();
+                            pd.dismiss();
+                        }
+
+
                 });
 
                 }
@@ -129,7 +132,7 @@ public class polls extends Fragment {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                         Toast.makeText(getActivity(),"Your Don't have permission to be here!",Toast.LENGTH_LONG).show();
             }
         });
         rv.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), new RecyclerItemClickListener.OnItemClickListener() {

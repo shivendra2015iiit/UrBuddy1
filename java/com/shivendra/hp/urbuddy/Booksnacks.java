@@ -102,7 +102,7 @@ public class Booksnacks extends AppCompatActivity {
             }else{
             pd= new ProgressDialog(Booksnacks.this);
             pd.setMessage("Loading ...");
-            pd.setCancelable(false);
+            pd.setCancelable(true);
             pd.show();
             // day processing
 
@@ -229,7 +229,7 @@ public class Booksnacks extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
-                    Toast.makeText(getApplicationContext(),"Database error3: " +databaseError,Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"You can't view this section with guest ID : " +databaseError,Toast.LENGTH_SHORT).show();
                 }
 
             });
