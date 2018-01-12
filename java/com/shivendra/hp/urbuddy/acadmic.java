@@ -80,7 +80,7 @@ public class acadmic extends Fragment {
         }catch (Exception e){
 
         }             try {
-        imagesRef5 = storageRef.child("acadmics/tt4");
+        imagesRef5 = storageRef.child("acadmics/tt4.jpg");
         Glide.with(getContext()).using(new FirebaseImageLoader()).load(imagesRef5).into(ttfourth);
         }catch (Exception e){
 

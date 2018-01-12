@@ -9,8 +9,16 @@ public class thought {
     String positive;
     String total;
     String color;
-
+    String voted;
     String timestamp;
+
+
+    public String getVoted() {
+        return voted;
+    }
+    public void setVoted(String voted) {
+        this.voted = voted;
+    }
     public String getTimestamp() {
         return timestamp;
     }

@@ -34,14 +34,14 @@ public class suggestionAdapter extends RecyclerView.Adapter<suggestionHolder> {
     @Override
     public void onBindViewHolder(suggestionHolder holder, int position) {
              holder.thought.setText(thoughts.get(position).getThought());
-        if(thoughts.get(position).getColor().equals("2")){
+        if(thoughts.get(position).getColor().equals("2") && thoughts.get(position).getVoted().equals("1")){
             holder.rl.setBackgroundColor(ContextCompat.getColor(c,R.color.yellow));
 
-        }else if(thoughts.get(position).getColor().equals("1")){
+        }else if(thoughts.get(position).getColor().equals("1") && thoughts.get(position).getVoted().equals("1")){
 
             holder.rl.setBackgroundColor(ContextCompat.getColor(c,R.color.green));
 
-        }else if(thoughts.get(position).getColor().equals("-1")){
+        }else if(thoughts.get(position).getColor().equals("-1") && thoughts.get(position).getVoted().equals("1")){
             holder.rl.setBackgroundColor(ContextCompat.getColor(c,R.color.red));
 
         }

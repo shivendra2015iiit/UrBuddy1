@@ -13,6 +13,7 @@ import com.google.android.gms.ads.reward.RewardItem;
 import com.google.android.gms.ads.reward.RewardedVideoAd;
 import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,6 +25,8 @@ public class RewardedAdd extends AppCompatActivity implements RewardedVideoAdLis
     private RewardedVideoAd mRewardedVideoAd;
     private DatabaseReference mRewardRef;
     private FirebaseAuth firebaseAuth;
+    private FirebaseUser currentUser;
+    private String[] user;
 
     private int i =0;
     @Override
@@ -32,6 +35,9 @@ public class RewardedAdd extends AppCompatActivity implements RewardedVideoAdLis
         setContentView(R.layout.activity_rewarded_add);
 
         firebaseAuth = FirebaseAuth.getInstance();
+        currentUser = firebaseAuth.getCurrentUser();
+        assert currentUser != null;
+        user = currentUser.getEmail().split("@");
         mRewardRef = FirebaseDatabase.getInstance().getReferenceFromUrl("https://ur-buddy.firebaseio.com/Rewards");
         coinsearned = (TextView) findViewById(R.id.coin_textview);
 
@@ -40,7 +46,7 @@ public class RewardedAdd extends AppCompatActivity implements RewardedVideoAdLis
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 try {
-                    coinsearned.setText("Your Coins : "+dataSnapshot.child(firebaseAuth.getUid()+"").getValue().toString());
+                    coinsearned.setText("Your Coins : "+dataSnapshot.child(user[0]).getValue().toString());
                 }catch (Exception e){
                     coinsearned.setText("Your Coins : 0 ");
                 }
@@ -111,11 +117,11 @@ public class RewardedAdd extends AppCompatActivity implements RewardedVideoAdLis
                                              public void onDataChange(DataSnapshot dataSnapshot) {
                                                  int current_coin=0;
                                                  try {
-                                                   current_coin = Integer.parseInt(dataSnapshot.child(firebaseAuth.getUid()).getValue().toString());
+                                                   current_coin = Integer.parseInt(dataSnapshot.child(user[0]).getValue().toString());
                                                  }catch (Exception e){
 
                                                  }
-                                                 mRewardRef.child(firebaseAuth.getUid()).setValue(current_coin+reward.getAmount());
+                                                 mRewardRef.child(user[0]).setValue(current_coin+reward.getAmount());
                                              }
 
                                              @Override

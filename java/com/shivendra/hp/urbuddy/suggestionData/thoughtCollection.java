@@ -42,14 +42,20 @@ public class thoughtCollection {
                     percent =(positive/(positive+negative))*100;
 
                 }
-              catch (Exception e){
+               catch (Exception e){
 
               }
-                if(percent>50){
+              if(d.child("Positive").child(uid).exists() || d.child("Negative").child(uid).exists()){
+                  m.setVoted("1");
+              }
+              else{
+                  m.setVoted("0");
+              }
+                if(percent > 50){
                   color = 1;
-                }else if(percent ==50){
+                }else if(percent == 50){
                     color = 2;
-                }else if(percent <50){
+                }else if(percent < 50){
                     color = -1;
                 }
                 m.setColor(color+"");//color 1 means green -1 means red 0 means white(no vote) 2 means yellow
