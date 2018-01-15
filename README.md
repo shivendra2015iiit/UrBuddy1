@@ -15,17 +15,19 @@ appversion: 0/1    where 0 means app is inactive,1 means app is active don't rem
 and dont off link sharing.
 
 3) Database for home in firebase
- \home\<Priority>\Text : for text
+ \home\<timestamp in millisecond when it was created>\Text : for text
                                          \Image : for image
                                          \ Heading : for heading
+                                         \ UpdateID : Id of the user who uploaded that card
  
 4) Storage for home is in home with image name same as in database home\Image value.
 
 5) Share app same point 2 folders link is given so in that folder we have to keep the latest working app.
 
 6) Gallery database
-    GalleryData\<serialnumberofimage><space><Title of Image>    and it's value is imagename in storage database  
- 
+    Gallery\<timestamp in millisecond when it was created>\Caption    Caption of image  
+                                                          \Photo       name of photo as saved in storage (under gallery\)
+                                                          \UpdateID    Id of user who have uploaded that photo
 7) Polls databse structure 
                   Polls\<timestamp in millisecond when it was created>\Positive  :   who voted yes
                   Polls\<timestamp in millisecond when it was created>\Thought   :      stores the thought
