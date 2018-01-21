@@ -43,4 +43,6 @@ a folder acadmics with images: ap1.jpg : annual planner first page
                                tt2.jpg : time table for 2 nd year
                                 tt3.jpg : time table for 3 rd year
                                  tt4.jpg : time table for 4 th year
+                                 
+ 10) A cron job is setup to take the backup of nUser ( part of database which contains booking) at 1:00 P.M. which will serve as the counting file for counter app of your buddy.
                            
