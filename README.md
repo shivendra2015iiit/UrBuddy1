@@ -44,5 +44,7 @@ a folder acadmics with images: ap1.jpg : annual planner first page
                                 tt3.jpg : time table for 3 rd year
                                  tt4.jpg : time table for 4 th year
                                  
- 10) A cron job is setup to take the backup of nUser ( part of database which contains booking) at 1:00 P.M. which will serve as the counting file for counter app of your buddy.
+ 10) A cron job is setup (using shivam9935@gmail.com) to take the backup of nUser ( part of database which contains booking) at 1:00 P.M. which will serve as the counting file for counter app of your buddy.
+ 
+ 11) snacks counter app will be counting from "CountSnapshot" database and it is updated 2 times in a day at 10 A.M. and 12 A.M.
                            
