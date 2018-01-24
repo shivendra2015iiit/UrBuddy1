@@ -21,8 +21,13 @@ public class photoCollection {
         for (DataSnapshot d : ds.getChildren()){
             try {
                 m = new photo();
-                m.setName(d.getKey());
-                m.setPhotoUrl(d.getValue().toString());
+                try {
+                    m.setName(d.child("Caption").getValue().toString());
+                }catch (Exception e){
+
+                }
+
+                m.setPhotoUrl(d.child("Photo").getValue().toString());
                 photos.add(m);// its name of image in database
             }catch (Exception e){
 

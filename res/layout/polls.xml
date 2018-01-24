@@ -29,6 +29,7 @@
         android:layout_height="100dp"
         android:inputType="text|textMultiLine"
         android:gravity="top"
+        android:textStyle="italic"
         android:hint=" Write Your Revolutionary Thought ,\n  It's Anonymous"
         android:background="@drawable/rounded"
         android:textColor="@android:color/white"

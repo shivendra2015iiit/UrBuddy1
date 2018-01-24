@@ -40,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
     ProgressDialog pg;
     private FirebaseAuth firebaseAuth;
-    final boolean[] s = {false};
+
 
     @Override
     public void onStart() {
@@ -65,6 +65,12 @@ public class LoginActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         firebaseAuth.getCurrentUser().sendEmailVerification();
 
+                    }
+                });
+                pd.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
                     }
                 });
                 pd.show();
@@ -188,6 +194,12 @@ public class LoginActivity extends AppCompatActivity {
 
                                     }
                                 });
+                                pd.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                    }
+                                });
                                 pd.show();
 
                             }
@@ -226,26 +238,38 @@ public class LoginActivity extends AppCompatActivity {
     public void loginguest(View view) {
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        final ProgressDialog p1 = new ProgressDialog(this);
+        p1.setMessage("Logging in as guest...");
+        p1.setCanceledOnTouchOutside(false);
+        p1.setCancelable(false);
+        p1.show();
         if (activeNetwork != null) {
             firebaseAuth.signInWithEmailAndPassword("guest@iiitkottayam.ac.in", "guest1234").addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
                         if (firebaseAuth.getCurrentUser().isEmailVerified()) {
-                            progressDialog.dismiss();
+                            p1.dismiss();
                             Intent I = new Intent(getApplicationContext(), drawer.class);  //launch the main activity
                             startActivity(I);
                             LoginActivity.this.finish();
                         } else {
-                            progressDialog.dismiss();
-                            ProgressDialog.Builder pd = new ProgressDialog.Builder(LoginActivity.this);
+                            p1.dismiss();
+                            final ProgressDialog.Builder pd = new ProgressDialog.Builder(LoginActivity.this);
                             pd.setMessage(R.string.verifyemail);
-                            pd.setCancelable(false);
+                            pd.setCancelable(true);
                             pd.setPositiveButton("Resend mail", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     firebaseAuth.getCurrentUser().sendEmailVerification();
 
+                                }
+
+                            });
+                            pd.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
                                 }
                             });
                             pd.show();

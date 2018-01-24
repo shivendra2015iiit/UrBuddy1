@@ -66,7 +66,8 @@ public class gallery extends Fragment {
         pd.show();
         rv = (RecyclerView) v.findViewById(R.id.rv_gallery);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
-        mRootRef = FirebaseDatabase.getInstance().getReferenceFromUrl("https://ur-buddy.firebaseio.com/GalleryData");
+
+        mRootRef = FirebaseDatabase.getInstance().getReferenceFromUrl("https://ur-buddy.firebaseio.com/Gallery");
 
         mRootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -74,6 +75,7 @@ public class gallery extends Fragment {
                 adapter = new galleryAdapter(getActivity(), photoCollection.getphotocollection(dataSnapshot));
                 rv.setAdapter(adapter);
                 pd.dismiss();
+                Toast.makeText(getActivity(),"Touch Photo to Zoom",Toast.LENGTH_SHORT).show();
 
             }
 

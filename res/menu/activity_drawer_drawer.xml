@@ -32,6 +32,11 @@
             android:icon="@drawable/ic_poll_black_36dp"
             android:title="@string/suggestview" />
 
+      <!--  <item                                                             add when needed
+            android:id ="@+id/nav_upload"
+            android:icon ="@drawable/ic_file_upload_black_36dp"
+            android:title="@string/upload_section"/>-->
+
     </group>
 
     <item android:title="@string/communicate">

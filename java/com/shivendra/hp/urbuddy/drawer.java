@@ -27,6 +27,11 @@ import com.bumptech.glide.Glide;
 import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -39,7 +44,9 @@ public class drawer extends AppCompatActivity
          private FirebaseAuth firebaseAuth;
          private FirebaseStorage storage = FirebaseStorage.getInstance();
          private StorageReference storageReference =storage.getReference();
-         private StorageReference messmenureference = storageReference.child("messmenu.jpg");
+
+         private DatabaseReference dbr = FirebaseDatabase.getInstance().getReferenceFromUrl("https://ur-buddy.firebaseio.com/messmenu");
+         private StorageReference messmenureference;
          ImageView profilepic ;
          TextView displayname;
          TextView mail;
@@ -115,9 +122,6 @@ profilepic.setOnClickListener(new View.OnClickListener(){
         */
         //
 
-
-
-
         ///setting default fragment to home
         Fragment fragment = null;
         fragment = new home();
@@ -191,7 +195,9 @@ profilepic.setOnClickListener(new View.OnClickListener(){
         } else if (id == R.id.nav_gallery) {
               fragment = new gallery();
 
-        } /*else if (id == R.id.nav_hostel) {     // when we add hostel fragment in future
+        }/*else if (id == R.id.nav_upload) {
+
+          }*/ /*else if (id == R.id.nav_hostel) {     // when we add hostel fragment in future
               fragment = new hostel();
 
         }*/
@@ -245,9 +251,23 @@ profilepic.setOnClickListener(new View.OnClickListener(){
     public void showmenu(View v){
         DisplayMetrics displaymetrics = new DisplayMetrics();
         this.getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
-        int width = displaymetrics.widthPixels;
-        int height = displaymetrics.heightPixels;
-        loadPhoto(messmenureference,width,height);
+        final int width = displaymetrics.widthPixels;
+        final int height = displaymetrics.heightPixels;
+
+        dbr.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                messmenureference = storageReference.child(dataSnapshot.child("Photoname").getValue().toString());
+                loadPhoto(messmenureference,width,height);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(getApplication(),"ERROR  "+databaseError,Toast.LENGTH_LONG).show();
+            }
+        });
+
     }
     public void booksnacks(View v){
         Intent i = new Intent(drawer.this,Booksnacks.class);
@@ -268,7 +288,7 @@ profilepic.setOnClickListener(new View.OnClickListener(){
         ImageView image = (ImageView) layout.findViewById(R.id.fullimage);
         image.setScaleType(ImageView.ScaleType.FIT_XY);
 
-        Glide.with(this).using(new FirebaseImageLoader()).load(reference).placeholder(R.drawable.loading).into(image);
+        Glide.with(this).using(new FirebaseImageLoader()).load(reference).thumbnail(0.1f).placeholder(R.drawable.loading).into(image);
         PhotoViewAttacher pd = new PhotoViewAttacher(image);
         pd.setZoomable(true);
         image.getLayoutParams().height = height;

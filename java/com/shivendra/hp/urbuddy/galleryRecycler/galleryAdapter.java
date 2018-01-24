@@ -50,7 +50,7 @@ public class galleryAdapter extends RecyclerView.Adapter<galleryHolder> {
 
         imagesRef = storageRef.child("gallery/"+Photo.get(position).getPhotoUrl());
           holder.name.setText(Photo.get(position).getName());
-        Glide.with(c).using(new FirebaseImageLoader()).load(imagesRef).diskCacheStrategy(DiskCacheStrategy.NONE).placeholder(R.drawable.loading).into(holder.photo);
+        Glide.with(c).using(new FirebaseImageLoader()).load(imagesRef).thumbnail(0.1f).override(500,150).diskCacheStrategy(DiskCacheStrategy.RESULT).placeholder(R.drawable.loading).into(holder.photo);
 
     }
 

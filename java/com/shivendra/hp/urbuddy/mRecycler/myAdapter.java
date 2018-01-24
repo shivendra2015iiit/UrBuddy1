@@ -51,7 +51,7 @@ public class myAdapter extends RecyclerView.Adapter<myHolder> {
                 holder.snackscount.setText(Menu.get(position).getSnackscount());
                 holder.teacount.setText(Menu.get(position).getTeacount());
               //  Glide.with(c).using(new FirebaseImageLoader()).load(imagesRef).placeholder(R.drawable.placeholder).fitCenter().into(holder.snacksimage);
-        Glide.with(c).using(new FirebaseImageLoader()).load(imagesRef).diskCacheStrategy(DiskCacheStrategy.NONE)
+        Glide.with(c).using(new FirebaseImageLoader()).load(imagesRef).thumbnail(0.1f).diskCacheStrategy(DiskCacheStrategy.ALL)
                 .dontAnimate().fitCenter().placeholder(R.drawable.loading).into(holder.snacksimage);
          //Glide.with(c).load("https://firebasestorage.googleapis.com/v0/b/ur-buddy.appspot.com/o/mail_id.png?alt=media&token=f2b004e4-64a4-460a-9241-7d5641683de2").into(holder.snacksimage);
     }
