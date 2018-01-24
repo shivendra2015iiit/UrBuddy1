@@ -48,7 +48,9 @@ Storage structure a database acadmic contains name of the image for each values 
                                  
  10) A cron job is setup (using shivam9935@gmail.com) to take the backup of nUser ( part of database which contains booking) at 1:00 P.M. which will serve as the counting file for counter app of your buddy.
  
- 11) snacks counter app will be counting from "CountSnapshot" database and it is updated 2 times in a day at 10 A.M. and 12 A.M.
+ 11) snacks counter app will be counting from "CountSnapshot" database and it is updated 2 times in a day at 10 A.M. and 1:00 P.M.
+ 
+ 12) Mess menu image name is stored in database messmeu/Photoname , so, before updating storage bucket update this database too and aread ISSUE SECTION TO AVOIDE IMAGE CACHING ISSUE.
  
  ISSUE : While hardcoding image name in code and fetching it from database make a cache in mobile which then after deleting the original image still loads the image
  https://github.com/firebase/FirebaseUI-Android/issues/479
