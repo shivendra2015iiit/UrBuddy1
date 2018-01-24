@@ -47,4 +47,8 @@ a folder acadmics with images: ap1.jpg : annual planner first page
  10) A cron job is setup (using shivam9935@gmail.com) to take the backup of nUser ( part of database which contains booking) at 1:00 P.M. which will serve as the counting file for counter app of your buddy.
  
  11) snacks counter app will be counting from "CountSnapshot" database and it is updated 2 times in a day at 10 A.M. and 12 A.M.
+ 
+ ISSUE : While hardcoding image name in code and fetching it from database make a cache in mobile which then after deleting the original image still loads the image
+ https://github.com/firebase/FirebaseUI-Android/issues/479
+ 
                            
