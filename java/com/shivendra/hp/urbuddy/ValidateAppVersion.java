@@ -91,12 +91,12 @@ public class ValidateAppVersion extends AppCompatActivity {
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     pd.dismiss();
                     try {
-                        if (dataSnapshot.child("211").getValue().toString().equals("1")) {
+                        if (dataSnapshot.child("212").getValue().toString().equals("1")) {
 
                             Intent i = new Intent(ValidateAppVersion.this, LoginActivity.class);
                             startActivity(i);
                             ValidateAppVersion.this.finish();
-                        } else if (dataSnapshot.child("211").getValue().toString().equals("0")) {
+                        } else if (dataSnapshot.child("212").getValue().toString().equals("0")) {
                             ad.setCancelable(false);
                             ad.setTitle("GOOD NEWS !");
                             ad.setMessage("A New Version Of App Is Available. This Version is no longer supported by developer.Contact Beta Team");

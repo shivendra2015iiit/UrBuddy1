@@ -138,7 +138,7 @@ public class RewardedAdd extends AppCompatActivity implements RewardedVideoAdLis
 
     @Override
     public void onRewardedVideoAdFailedToLoad(int i) {
-        Toast.makeText(this,"Failed to load",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,"No rewards video available right now" + i,Toast.LENGTH_SHORT).show();
 
     }
     @Override

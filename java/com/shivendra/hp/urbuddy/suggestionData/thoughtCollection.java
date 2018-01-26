@@ -1,8 +1,12 @@
 package com.shivendra.hp.urbuddy.suggestionData;
 
+import android.util.Log;
+import android.widget.Toast;
+
 import com.google.firebase.database.DataSnapshot;
 import com.shivendra.hp.urbuddy.galleryData.photo;
 
+import java.io.Console;
 import java.util.ArrayList;
 
 /**
@@ -20,26 +24,28 @@ public class thoughtCollection {
         for (DataSnapshot d : ds.getChildren()){
             try {
                 m = new thought();
-                int positive=0;
-                int negative = 0;
-                int percent = 0;
+                float positive=0;
+                float negative = 0;
+                float percent = 0;
                 int color = 0;
                 m.setTimestamp(d.getKey());
                 m.setThought(d.child("Thought").getValue().toString());
                 try {
-                    positive=(int)d.child("Positive").getChildrenCount();
+                    positive=(float) d.child("Positive").getChildrenCount();
                 }catch (Exception e){
 
                 }
              try {
-                   negative = (int)d.child("Negative").getChildrenCount();
+                   negative = (float) d.child("Negative").getChildrenCount();
                   }catch (Exception e){
 
                    }
 
                 m.setTotal(positive+negative+"");
+
                 try {
                     percent =(positive/(positive+negative))*100;
+                    Log.e("percent : ",positive/(positive+negative)+" " +negative+ " "+ percent);
 
                 }
                catch (Exception e){
