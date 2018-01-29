@@ -167,8 +167,9 @@ public class Booksnacks extends AppCompatActivity {
                     mRootRef.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
-                            if (f.after(t)) {
+
                             if (dataSnapshot.child("Repeat").getValue() == null) {
+                                if (f.after(t)) {
                                 mRootRef.child("Repeat").setValue(today);
                                 Toast.makeText(getApplicationContext(), "Your Snacks is Noted for only "+ today+" "+wday, Toast.LENGTH_LONG).show();
                             }
