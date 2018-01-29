@@ -11,6 +11,7 @@ import com.shivendra.hp.urbuddy.R;
 import com.shivendra.hp.urbuddy.suggestionData.thought;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.zip.Inflater;
 
 /**
@@ -23,6 +24,7 @@ public class suggestionAdapter extends RecyclerView.Adapter<suggestionHolder> {
     public suggestionAdapter (Context c, ArrayList<thought> thoughts){
         this.c =c;
         this.thoughts= thoughts;
+        Collections.reverse(this.thoughts);
     }
     @Override
     public suggestionHolder onCreateViewHolder(ViewGroup parent, int viewType) {

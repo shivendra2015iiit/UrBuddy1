@@ -3,35 +3,94 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="0.5">
+    android:layout_height="match_parent"
+    android:background="@drawable/messbg">
 
-    <ImageButton
+<!--<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fitsSystemWindows="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/messbg2"
+    >-->
+
+    <!--<ImageButton
         android:id="@+id/imageButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
         android:contentDescription="@string/mess_menu"
+        android:elevation="@dimen/backdrop_subtitle"
+        android:onClick="showmenu"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/messmenu" />-->
+    <RelativeLayout
+        android:id="@+id/rellay1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:scaleType="fitXY"
-        android:adjustViewBounds="true"
-        android:onClick="showmenu"
-        app:srcCompat="@drawable/messmenu" />
+        android:layout_weight="0.5"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent">
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/messbutton"
+            android:padding="18dp"
+            android:text="MESS MENU"
+            android:onClick="showmenu"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textColor="@color/white"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+        app:layout_constraintTop_toBottomOf="@+id/rellay1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent">
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/messbutton"
+            android:padding="10dp"
+            android:text="BOOK SNACKS"
+            android:onClick="booksnacks"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+    </RelativeLayout><!--
+</android.support.constraint.ConstraintLayout>-->
+     <!--
+       <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/messbg"
+        android:layout_height="match_parent"
         android:layout_weight="0.5">
 
         <ImageButton
             android:id="@+id/imageButton2"
-            android:contentDescription="@string/book_snacks"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
             android:adjustViewBounds="true"
-            android:scaleType="fitXY"
+            android:contentDescription="@string/book_snacks"
+            android:elevation="@dimen/backdrop_subtitle"
             android:onClick="booksnacks"
+            android:scaleType="fitXY"
             app:srcCompat="@drawable/booksnacks" />
-    </RelativeLayout>
+    </RelativeLayout>-->
 </LinearLayout>

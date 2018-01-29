@@ -127,7 +127,7 @@ public class Booksnacks extends AppCompatActivity {
                  wday = format_day.format(currentTime);
                 time = formatter_time.format(currentTime);
                 t = formatter_time.parse(time);
-                f = formatter_time.parse("11:59");
+                f = formatter_time.parse("12:59");
                 daynumber = getday(wday);
 
             //
@@ -167,9 +167,16 @@ public class Booksnacks extends AppCompatActivity {
                     mRootRef.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
+                            if (f.after(t)) {
                             if (dataSnapshot.child("Repeat").getValue() == null) {
                                 mRootRef.child("Repeat").setValue(today);
                                 Toast.makeText(getApplicationContext(), "Your Snacks is Noted for only "+ today+" "+wday, Toast.LENGTH_LONG).show();
+                            }
+                            else{
+                                mRootRef.child("Repeat").setValue(tommorrow);
+                                Toast.makeText(getApplicationContext(), "Your Snacks is Noted for only "+ tommorrow+" "+wtday, Toast.LENGTH_LONG).show();
+
+                            }
                                 fab.setImageResource(R.drawable.norepeat);
 
                             } else if (dataSnapshot.child("Repeat").getValue().equals("-1")) {
@@ -215,11 +222,19 @@ public class Booksnacks extends AppCompatActivity {
 
 
                     if (dataSnapshot.child("Repeat").getValue() == null) {
+                        if (f.after(t)) {
                         mRootRef.child("Repeat").setValue(today);
-                        fab.setImageResource(R.drawable.norepeat);
-                        Toast.makeText(getApplicationContext(), "Your Snacks is Noted for only "+ today+" "+wday, Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Your Snacks is Noted for only "+ today+" "+wday, Toast.LENGTH_LONG).show();
+                        }
+                        else{
+                            mRootRef.child("Repeat").setValue(tommorrow);
+                            Toast.makeText(getApplicationContext(), "Your Snacks is Noted for only "+ tommorrow+" "+wtday, Toast.LENGTH_LONG).show();
 
-                    } else if (dataSnapshot.child("Repeat").getValue().equals("-1")) {
+                        }
+
+                        fab.setImageResource(R.drawable.norepeat);
+                        }
+                       else if (dataSnapshot.child("Repeat").getValue().equals("-1")) {
                         fab.setImageResource(R.drawable.repeat);
                     } else {
                         fab.setImageResource(R.drawable.norepeat);

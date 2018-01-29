@@ -2,10 +2,13 @@ package com.shivendra.hp.urbuddy;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
