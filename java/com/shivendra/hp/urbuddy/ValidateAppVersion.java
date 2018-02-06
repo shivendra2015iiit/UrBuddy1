@@ -91,16 +91,15 @@ public class ValidateAppVersion extends AppCompatActivity {
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     pd.dismiss();
                     try {
-                        if (dataSnapshot.child("214").getValue().toString().equals("1")) {
+                        if (dataSnapshot.child("215").getValue().toString().equals("1")) {
 
                             Intent i = new Intent(ValidateAppVersion.this, LoginActivity.class);
                             startActivity(i);
                             ValidateAppVersion.this.finish();
-                        } else if (dataSnapshot.child("214").getValue().toString().equals("0")) {
+                        } else if (dataSnapshot.child("215").getValue().toString().equals("0")) {
                             ad.setCancelable(false);
                             ad.setTitle("GOOD NEWS !");
                             ad.setMessage("A New Version Of App Is Available. This Version is no longer supported by developer.Contact Beta Team");
-                            ad.show();
                             ad.setPositiveButton("GOT IT ! ", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
@@ -112,6 +111,7 @@ public class ValidateAppVersion extends AppCompatActivity {
                                     finish();
                                 }
                             });
+                            ad.show();
                         }
                     } catch (Exception e) {
                         Log.e("NUll POInt APPSUPORT : ", e + "");

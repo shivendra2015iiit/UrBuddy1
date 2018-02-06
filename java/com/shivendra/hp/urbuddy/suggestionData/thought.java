@@ -13,7 +13,7 @@ public class thought {
     String timestamp;
 
 
-    public String getVoted() {
+    public  String getVoted() {
         return voted;
     }
     public void setVoted(String voted) {
