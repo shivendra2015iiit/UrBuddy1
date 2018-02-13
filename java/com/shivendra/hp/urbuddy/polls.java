@@ -2,6 +2,7 @@ package com.shivendra.hp.urbuddy;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -101,7 +102,7 @@ public class polls extends Fragment {
             }
         });
 
-        mpollsRef.addValueEventListener(new ValueEventListener() {
+        mpollsRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot d : dataSnapshot.getChildren()){
@@ -147,6 +148,13 @@ public class polls extends Fragment {
                     public void onClick(DialogInterface dialog, int which) {
                         mpollsRef.child(thoughts.get(position).getTimestamp()).child("Negative").child(currentUser.getUid()).removeValue();
                        mpollsRef.child(thoughts.get(position).getTimestamp()).child("Positive").child(currentUser.getUid()).setValue("1");
+                        Intent i = new Intent(getActivity(),drawer.class);
+                        Bundle b = new Bundle();
+                        b.putString("f","polls");
+                        i.putExtras(b);
+                        startActivity(i);
+                        getActivity().finish();
+
                     }
                 });
                 ab.setNegativeButton("No, It's rubbish", new DialogInterface.OnClickListener() {
@@ -154,7 +162,24 @@ public class polls extends Fragment {
                     public void onClick(DialogInterface dialog, int which) {
                         mpollsRef.child(thoughts.get(position).getTimestamp()).child("Negative").child(currentUser.getUid()).setValue("1");
                         mpollsRef.child(thoughts.get(position).getTimestamp()).child("Positive").child(currentUser.getUid()).removeValue();
+                        Intent i = new Intent(getActivity(),drawer.class);
+                        Bundle b = new Bundle();
+                        b.putString("f","polls");
+                        i.putExtras(b);
+                        startActivity(i);
+                        getActivity().finish();
 
+                    }
+                });
+              ab.setNeutralButton("Comment", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                           Intent i = new Intent(getActivity(),Comment.class);
+                        Bundle b = new Bundle();
+                        b.putString("timestamp",thoughts.get(position).getTimestamp());
+                        i.putExtras(b);
+                            startActivity(i);
+                           getActivity().finish();
                     }
                 });
                 ab.show();

@@ -18,17 +18,17 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        
         <service android:name=".MyFirebaseMessagingService">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING"/>
+                <action android:name="com.google.firebase.MESSAGING" />
             </intent-filter>
         </service>
-        <service android:name="MyFirebaseInstanceIDServices">
+        <service android:name=".MyFirebaseInstanceIDServices">
             <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
+
         <activity
             android:name=".Splashscreen"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -37,6 +37,7 @@
             android:theme="@style/FullscreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -65,7 +66,12 @@
             android:name=".drawer"
             android:label="@string/title_activity_drawer"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" >
+            <intent-filter>
+                <action  android:name=".drawer" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".Profile"
             android:label="Profile"
@@ -76,15 +82,25 @@
             android:name=".Booksnacks"
             android:label="@string/title_activity_booksnacks"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" >
+            <intent-filter>
+                <action  android:name=".Booksnacks" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".processActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ValidateAppVersion"
             android:screenOrientation="portrait" />
-        <activity android:name=".RewardedAdd"
+        <activity
+            android:name=".RewardedAdd"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".Comment"
+            android:label="@string/title_activity_comment"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

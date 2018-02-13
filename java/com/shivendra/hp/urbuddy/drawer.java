@@ -35,6 +35,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -64,7 +65,7 @@ public class drawer extends AppCompatActivity
 
 //ad banner//
      //
-
+        FirebaseMessaging.getInstance().subscribeToTopic("notification_to_all");  //for sending notification to all
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -124,10 +125,27 @@ profilepic.setOnClickListener(new View.OnClickListener(){
 
         */
         //
-
-        ///setting default fragment to home
         Fragment fragment = null;
         fragment = new home();
+        ///setting default fragment to home
+        Bundle bundle = getIntent().getExtras();
+        try {
+            String position = bundle.getString("f");
+            if(position!=null){
+                if(position.equals("polls"))
+                    fragment = new polls();
+                else if(position.equals("mess"))
+                    fragment = new mess();
+                else if(position.equals("gallery")){
+                    fragment = new gallery();
+                }
+            }
+
+        }catch (Exception e){
+
+        }
+
+
         if(fragment!=null){
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.content_frame,fragment);
@@ -198,9 +216,13 @@ profilepic.setOnClickListener(new View.OnClickListener(){
         } else if (id == R.id.nav_gallery) {
               fragment = new gallery();
 
-        }/*else if (id == R.id.nav_upload) {
+        }
+        else if(id == R.id.nav_events) {
+              fragment = new EventsNotification();
+          }/*else if (id == R.id.nav_upload) {
 
-          }*/ /*else if (id == R.id.nav_hostel) {     // when we add hostel fragment in future
+          }*/
+           /*else if (id == R.id.nav_hostel) {     // when we add hostel fragment in future
               fragment = new hostel();
 
         }*/
@@ -218,7 +240,7 @@ profilepic.setOnClickListener(new View.OnClickListener(){
               try {
                   Intent i = new Intent(Intent.ACTION_SEND);
                   i.setType("text/plain");
-                  i.putExtra(Intent.EXTRA_SUBJECT, "Ur Buddy V 2.1.1");
+                  i.putExtra(Intent.EXTRA_SUBJECT, "Ur Buddy V 2.1.6");
                   String sAux ;
                   sAux ="https://drive.google.com/open?id=1UTx5XuIPV7VcGP-LL97eP8-JSXm_Ujzm";
                   i.putExtra(Intent.EXTRA_TEXT, sAux);

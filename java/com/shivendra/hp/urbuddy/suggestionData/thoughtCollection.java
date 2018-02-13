@@ -45,12 +45,17 @@ public class thoughtCollection {
 
                 try {
                     percent =(positive/(positive+negative))*100;
-                    Log.e("percent : ",positive/(positive+negative)+" " +negative+ " "+ percent);
 
                 }
                catch (Exception e){
 
               }
+              try {
+                  m.setComment(d.child("Comment").getChildrenCount()+0+"");
+              } catch (Exception e){
+
+              }
+
               if(d.child("Positive").child(uid).exists() || d.child("Negative").child(uid).exists()){
                   m.setVoted("1");
               }

@@ -261,6 +261,9 @@ public class Booksnacks extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Intent i = new Intent(Booksnacks.this, drawer.class);
+        Bundle b = new Bundle();
+        b.putString("f","mess");
+        i.putExtras(b);
         startActivity(i);
         Booksnacks.this.finish();
 

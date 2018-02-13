@@ -47,7 +47,7 @@ public class suggestionAdapter extends RecyclerView.Adapter<suggestionHolder> {
             holder.rl.setBackgroundColor(ContextCompat.getColor(c,R.color.red));
 
         }
-             holder.details.setText("Positive : "+thoughts.get(position).getPositive()+"%  Out of Total "+thoughts.get(position).getTotal()+" Votes");
+             holder.details.setText("Positive : "+thoughts.get(position).getPositive()+"% ("+thoughts.get(position).getTotal()+" Votes) Comments "+thoughts.get(position).getComment());
     }
 
     @Override

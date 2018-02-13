@@ -11,7 +11,15 @@ public class thought {
     String color;
     String voted;
     String timestamp;
+    String comment;
 
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
 
     public  String getVoted() {
         return voted;
