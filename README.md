@@ -1,4 +1,6 @@
 # UrBuddy
+
+Playstore link : https://play.google.com/store/apps/details?id=com.shivendra.hp.urbuddy&hl=en
 <<>>
 
 FOR ANY MAKING CHANGES IN CODE OR DEVELOPING AND UPGRADING THE SAME CODE PLEASE TAKE MY PERMISSION. DO NOT COPY WITHOUT PERMISSION 
