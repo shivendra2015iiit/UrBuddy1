@@ -10,9 +10,17 @@ public class thought {
     String total;
     String color;
     String voted;
+    String displayname;
     String timestamp;
     String comment;
 
+    public String getDisplayname() {
+        return displayname;
+    }
+
+    public void setDisplayname(String displayname) {
+        this.displayname = displayname;
+    }
     public String getComment() {
         return comment;
     }

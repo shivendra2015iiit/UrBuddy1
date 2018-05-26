@@ -45,7 +45,8 @@ public class home extends Fragment {
         pd.setCancelable(true);
         pd.show();
         rv = (RecyclerView) v.findViewById(R.id.rv_home);
-        rv.setLayoutManager(new LinearLayoutManager(getContext()));
+        final LinearLayoutManager lmanager =new LinearLayoutManager(getContext());
+        rv.setLayoutManager(lmanager);
         rv.setNestedScrollingEnabled(false);
         mRootRef = FirebaseDatabase.getInstance().getReferenceFromUrl("https://ur-buddy.firebaseio.com/home");
         mRootRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -54,6 +55,7 @@ public class home extends Fragment {
 
                 adapter = new homeAdapter(getActivity(), panelCollection.getpanelcollection(dataSnapshot));
                 rv.setAdapter(adapter);
+               /* lmanager.scrollToPosition(3);*/
                 pd.dismiss();
 
             }

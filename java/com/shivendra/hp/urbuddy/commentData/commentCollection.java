@@ -21,9 +21,13 @@ public class commentCollection {
         for (DataSnapshot d : ds.getChildren()){
             m = new comment();
             Log.w("array",d.getKey()+"   "+d.getValue());
-            m.setComment(d.getValue().toString());
-            m.setDate(getdatefrommills(d.getKey()));
-            comments.add(m);
+            try {
+                m.setComment(d.child("value").getValue().toString());
+                m.setDate(getdatefrommills(d.getKey()));
+                comments.add(m);
+            }catch (Exception e){
+
+            }
         }
         return comments;
     }

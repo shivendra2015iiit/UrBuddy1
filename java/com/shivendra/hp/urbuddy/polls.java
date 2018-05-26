@@ -10,6 +10,8 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.InputFilter;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +24,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -63,7 +66,8 @@ public class polls extends Fragment {
         final View view= inflater.inflate(R.layout.polls,container,false);
 
         rv = (RecyclerView) view.findViewById(R.id.rv_suggestion);
-        rv.setLayoutManager(new LinearLayoutManager(getContext()));
+        final LinearLayoutManager lmanager = new LinearLayoutManager(getContext());
+        rv.setLayoutManager(lmanager);
 
         final ProgressDialog pd1 = new ProgressDialog(getActivity());
         pd1.setMessage("Loading...");
@@ -83,23 +87,97 @@ public class polls extends Fragment {
                 if(thoughtedit.getText().toString().trim().equals("")){
                     pd.dismiss();
                     Toast.makeText(getActivity(),"Write Something before posting..,",Toast.LENGTH_SHORT).show();
-                }else{
-                     final long time = System.currentTimeMillis();
-                    mpollsRef.child(time+"").child("Thought").setValue(thoughtedit.getText().toString().trim());
-
-                    mpollsRef.child(time+"").child("UID").setValue(firebaseAuth.getUid()).addOnSuccessListener(getActivity(), new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            Toast.makeText(getActivity(),"Successfully posted ! ",Toast.LENGTH_SHORT).show();
-                            thoughtedit.getText().clear();
-                            pd.dismiss();
-                        }
-
-
-                });
-
                 }
-            }
+       /*         else if(currentUser.getDisplayName()==null){
+
+                    AlertDialog.Builder ad = new AlertDialog.Builder(getActivity());
+                    ad.setMessage("Post is anonymous for only other users not administrators, User will see the post by the name you enter here (You can set this ONLY ONE time) ");
+                    ad.setTitle("Choose a display name");
+
+                    final EditText input = new EditText(getActivity());
+// Specify the type of input expected
+                    ad.setView(input);
+
+// Set up the buttons
+                    ad.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                           String m_Text = input.getText().toString();
+                           if(m_Text.length()>12){
+                               Toast.makeText(getContext(),"Display name should be less than 12 characters",Toast.LENGTH_LONG).show();
+                               input.setText("");
+
+                           }
+                           else{
+                               if(currentUser!=null){
+                                   UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                           .setDisplayName(m_Text).build();
+                                   currentUser.updateProfile(profileUpdates).addOnSuccessListener(getActivity(),new OnSuccessListener<Void>() {
+                                       @Override
+                                       public void onSuccess(Void aVoid) {
+                                           final long time = System.currentTimeMillis();
+                                           mpollsRef.child(time+"").child("Thought").setValue(thoughtedit.getText().toString().trim());
+                                           mpollsRef.child(time+"").child("displayname").setValue(currentUser.getDisplayName());
+                                           mpollsRef.child(time+"").child("UID").setValue(firebaseAuth.getUid()).addOnSuccessListener(getActivity(), new OnSuccessListener<Void>() {
+                                               @Override
+                                               public void onSuccess(Void aVoid) {
+                                                   Toast.makeText(getActivity(),"Successfully posted ! ",Toast.LENGTH_SHORT).show();
+                                                   thoughtedit.getText().clear();
+                                                   pd.dismiss();
+                                                   Intent i = new Intent(getActivity(),drawer.class);
+                                                   Bundle b = new Bundle();
+                                                   b.putString("f","polls");
+                                                   i.putExtras(b);
+                                                   startActivity(i);
+                                                   getActivity().finish();
+                                               }
+                                           });
+                                       }
+                                   });
+
+
+
+                        }
+                           }
+                        }
+                    });
+                    ad.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+
+                    ad.show();
+
+                }*/ else
+                    {
+                        final long time = System.currentTimeMillis();
+                        mpollsRef.child(time + "").child("Thought").setValue(thoughtedit.getText().toString().trim());
+                  //      mpollsRef.child(time+"").child("displayname").setValue(currentUser.getDisplayName());
+                        mpollsRef.child(time + "").child("UID").setValue(firebaseAuth.getUid()).addOnSuccessListener(getActivity(), new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Toast.makeText(getActivity(), "Successfully posted ! ", Toast.LENGTH_SHORT).show();
+                                thoughtedit.getText().clear();
+                                pd.dismiss();
+                                Intent i = new Intent(getActivity(), drawer.class);
+                                Bundle b = new Bundle();
+                                // used in cloud messaging
+                                b.putString("f", "polls");
+                                i.putExtras(b);
+                                startActivity(i);
+                                getActivity().finish();
+                            }
+
+
+                        });
+
+                    }
+                }
+
+
         });
 
         mpollsRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -121,13 +199,17 @@ public class polls extends Fragment {
                                 thoughtedit.setClickable(true);
                             }
                         }
-                        if (days > 7) {                                                          // avoiding for stop growing of database
+                        if (days > 30) {                                                          // avoiding / stop growing of database
                             mpollsRef.child(d.getKey()).removeValue();
                         }
                     }catch (Exception e){}
                 }
                     adapter = new suggestionAdapter(getActivity(), thoughtCollection.getthoughtcollection(dataSnapshot, currentUser.getUid()));
-                    rv.setAdapter(adapter);
+                int pos = getArguments().getInt("Initial_pos");
+
+                lmanager.scrollToPosition(pos);
+                rv.setAdapter(adapter);
+                Toast.makeText(getContext(),pos+"",Toast.LENGTH_LONG).show();
                 pd1.dismiss();
             }
 
@@ -151,6 +233,7 @@ public class polls extends Fragment {
                         Intent i = new Intent(getActivity(),drawer.class);
                         Bundle b = new Bundle();
                         b.putString("f","polls");
+                        b.putInt("position",position);
                         i.putExtras(b);
                         startActivity(i);
                         getActivity().finish();
@@ -165,6 +248,7 @@ public class polls extends Fragment {
                         Intent i = new Intent(getActivity(),drawer.class);
                         Bundle b = new Bundle();
                         b.putString("f","polls");
+                        b.putInt("position",position);
                         i.putExtras(b);
                         startActivity(i);
                         getActivity().finish();
@@ -176,6 +260,7 @@ public class polls extends Fragment {
                     public void onClick(DialogInterface dialog, int which) {
                            Intent i = new Intent(getActivity(),Comment.class);
                         Bundle b = new Bundle();
+                        b.putInt("position",position);
                         b.putString("timestamp",thoughts.get(position).getTimestamp());
                         i.putExtras(b);
                             startActivity(i);
@@ -189,3 +274,4 @@ public class polls extends Fragment {
     }
 
 }
+

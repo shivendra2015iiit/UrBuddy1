@@ -52,26 +52,31 @@
         android:layout_margin="@dimen/fab_margin"
         app:srcCompat="@android:drawable/ic_dialog_email" />-->
 
-<LinearLayout
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <EditText
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@color/navyblue"
-        android:textColor="@android:color/white"
-        android:hint="Write your Comment..."
-        android:visibility="visible"
-        android:textColorHint="@color/white"
-        android:layout_gravity="bottom|start"
-        android:id="@+id/messageedit"/>
-    <Button
-        android:id="@+id/postbutton"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:visibility="visible"
-        android:text="post"/>
-</LinearLayout>
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/messageedit"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_gravity="bottom|start"
+            android:background="@color/navyblue"
+            android:hint="Write your Comment..."
+            android:textColor="@android:color/white"
+            android:textColorHint="@color/white"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/postbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:text="post"
+            android:visibility="visible" />
+
+    </LinearLayout>
+
+
 </android.support.design.widget.CoordinatorLayout>

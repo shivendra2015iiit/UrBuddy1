@@ -36,6 +36,9 @@ public class suggestionAdapter extends RecyclerView.Adapter<suggestionHolder> {
     @Override
     public void onBindViewHolder(suggestionHolder holder, int position) {
              holder.thought.setText(thoughts.get(position).getThought());
+             if(thoughts.get(position).getDisplayname()!=null) {
+                 holder.dname.setText(thoughts.get(position).getDisplayname()+ " says :");
+             }
         if(thoughts.get(position).getColor().equals("2") && thoughts.get(position).getVoted().equals("1")){
             holder.rl.setBackgroundColor(ContextCompat.getColor(c,R.color.yellow));
 

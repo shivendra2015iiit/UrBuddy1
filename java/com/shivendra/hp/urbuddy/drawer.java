@@ -4,10 +4,12 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.ShareCompat;
 import android.support.v7.app.ActionBar;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -54,6 +56,8 @@ public class drawer extends AppCompatActivity
          ImageView profilepic ;
          TextView displayname;
          TextView mail;
+          int scrollPos=1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,10 +134,20 @@ profilepic.setOnClickListener(new View.OnClickListener(){
         ///setting default fragment to home
         Bundle bundle = getIntent().getExtras();
         try {
+            try {
+                scrollPos = bundle.getInt("position");
+            }catch (Exception e){}
+
+            Bundle args = new Bundle();
+            args.putInt("Initial_pos", scrollPos);
+
             String position = bundle.getString("f");
+
             if(position!=null){
-                if(position.equals("polls"))
+                if(position.equals("polls")){
                     fragment = new polls();
+                fragment.setArguments(args);
+                }
                 else if(position.equals("mess"))
                     fragment = new mess();
                 else if(position.equals("gallery")){
@@ -203,7 +217,10 @@ profilepic.setOnClickListener(new View.OnClickListener(){
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         Fragment fragment = null;
+//scroll
 
+        Bundle args = new Bundle();
+        args.putInt("Initial_pos", scrollPos);
         // Handle navigation view item clicks here.
         int id = item.getItemId();
           if(id == R.id.nav_home){
@@ -234,17 +251,16 @@ profilepic.setOnClickListener(new View.OnClickListener(){
 
           }else if(id ==R.id.nav_suggestview){
               fragment = new polls();
+              fragment.setArguments(args);
           }
 
         else if (id == R.id.nav_share) {
               try {
-                  Intent i = new Intent(Intent.ACTION_SEND);
-                  i.setType("text/plain");
-                  i.putExtra(Intent.EXTRA_SUBJECT, "Ur Buddy V 2.1.6");
-                  String sAux ;
-                  sAux ="https://drive.google.com/open?id=1UTx5XuIPV7VcGP-LL97eP8-JSXm_Ujzm";
-                  i.putExtra(Intent.EXTRA_TEXT, sAux);
-                  startActivity(Intent.createChooser(i, "choose one"));
+                  ShareCompat.IntentBuilder.from(drawer.this)
+                          .setType("text/plain")
+                          .setChooserTitle("Chooser title")
+                          .setText("http://play.google.com/store/apps/details?id=" + getApplication().getPackageName())
+                          .startChooser();
               } catch(Exception e) {
                   //e.toString();
               }

@@ -91,22 +91,21 @@ public class ValidateAppVersion extends AppCompatActivity {
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     pd.dismiss();
                     try {
-                        if (dataSnapshot.child("216").getValue().toString().equals("1")) {
+                        if (dataSnapshot.child("218").getValue().toString().equals("1")) {
 
                             Intent i = new Intent(ValidateAppVersion.this, LoginActivity.class);
                             startActivity(i);
                             ValidateAppVersion.this.finish();
-                        } else if (dataSnapshot.child("216").getValue().toString().equals("0")) {
+                        } else if (dataSnapshot.child("218").getValue().toString().equals("0")) {
                             ad.setCancelable(false);
                             ad.setTitle("GOOD NEWS !");
-                            ad.setMessage("A New Version Of App Is Available. This Version is no longer supported by developer.Contact Beta Team");
+                            ad.setMessage("A New Version Of App Is Available. This Version is no longer supported by developer. You will be redirected to playstore");
                             ad.setPositiveButton("GOT IT ! ", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    Intent viewIntent =
-                                            new Intent("android.intent.action.VIEW",
-                                                    Uri.parse("https://drive.google.com/open?id=1UTx5XuIPV7VcGP-LL97eP8-JSXm_Ujzm"));
-                                    startActivity(viewIntent);
+                                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                                    intent.setData(Uri.parse("https://play.google.com/store/apps/details?id=com.shivendra.hp.urbuddy"));
+                                    startActivity(intent);
                                     ValidateAppVersion.this.finish();
                                     finish();
                                 }

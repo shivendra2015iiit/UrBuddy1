@@ -46,6 +46,8 @@ public class Comment extends AppCompatActivity {
     RecyclerView rv ;
     private String[] user;
     TextView thought;
+
+    int position;
 CollapsingToolbarLayout collapsingToolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,10 +73,13 @@ CollapsingToolbarLayout collapsingToolbar;
 
         Bundle bundle = getIntent().getExtras();
         final String timestamp = bundle.getString("timestamp");
+            position = bundle.getInt("position"); // this will help in sending back position so that we will set it in layout
+
 
             mpollsRef2 = FirebaseDatabase.getInstance().getReferenceFromUrl("https://ur-buddy.firebaseio.com/Polls/"+timestamp+"/Comment");
             rv = (RecyclerView) findViewById(R.id.rv);
-            rv.setLayoutManager(new LinearLayoutManager(this));
+            final LinearLayoutManager lmanager =new LinearLayoutManager(this);
+            rv.setLayoutManager(lmanager);
 
             mpollsRef2.addValueEventListener(new ValueEventListener() {
                 @Override
@@ -115,7 +120,9 @@ CollapsingToolbarLayout collapsingToolbar;
                         pd.dismiss();
                     }
                     else {
-                        mpollsRef.child(timestamp).child("Comment").child(System.currentTimeMillis() + "").setValue(editText.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        String temTime =System.currentTimeMillis()+"";
+                        mpollsRef.child(timestamp).child("Comment").child(temTime).child("uid").setValue(currentUser.getUid());
+                        mpollsRef.child(timestamp).child("Comment").child(temTime).child("value").setValue(editText.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 editText.setText("");
@@ -159,9 +166,11 @@ CollapsingToolbarLayout collapsingToolbar;
         Intent i = new Intent(Comment.this, drawer.class);
         Bundle b = new Bundle();
         b.putString("f","polls");
+        b.putInt("position",position);
        i.putExtras(b);
         startActivity(i);
         Comment.this.finish();
 
     }
+
 }

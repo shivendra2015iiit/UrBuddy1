@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.ms.square.android.expandabletextview.ExpandableTextView;
 import com.shivendra.hp.urbuddy.R;
 
 /**
@@ -13,13 +14,15 @@ import com.shivendra.hp.urbuddy.R;
  */
 
 public class homeHolder extends RecyclerView.ViewHolder {
-    TextView text;
+    ExpandableTextView text;
+   /* TextView text;*/
     TextView heading;
     ImageView image;
     public homeHolder(View itemview){
         super(itemview);
         heading = (TextView) itemview.findViewById(R.id.home_head);
-        text = (TextView) itemview.findViewById(R.id.home_txt);
+      /*  text = (TextView) itemview.findViewById(R.id.home_txt);*/
+      text = (ExpandableTextView) itemview.findViewById(R.id.home_txt);
         image =(ImageView) itemview.findViewById(R.id.home_img);
 
     }

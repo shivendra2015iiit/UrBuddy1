@@ -15,8 +15,10 @@ public class suggestionHolder extends RecyclerView.ViewHolder {
     TextView thought;
     TextView details;
     RelativeLayout rl;
+    TextView dname;
     public suggestionHolder(View itemView) {
         super(itemView);
+        dname = ( TextView) itemView.findViewById(R.id.dname);
         thought = (TextView) itemView.findViewById(R.id.thought);
         details = (TextView) itemView.findViewById(R.id.positive);
         rl = (RelativeLayout) itemView.findViewById(R.id.rl);

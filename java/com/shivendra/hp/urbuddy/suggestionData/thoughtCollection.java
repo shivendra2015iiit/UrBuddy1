@@ -69,6 +69,12 @@ public class thoughtCollection {
                 }else if(percent < 50){
                     color = -1;
                 }
+                try{
+                   m.setDisplayname(d.child("displayname").getValue().toString());
+
+                }catch (Exception e){
+
+                }
                 m.setColor(color+"");//color 1 means green -1 means red 0 means white(no vote) 2 means yellow
                 m.setPositive(percent+"");
                 thoughts.add(m);// its name of image in database
