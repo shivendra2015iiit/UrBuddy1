@@ -3,8 +3,8 @@
 Playstore link : https://play.google.com/store/apps/details?id=com.shivendra.hp.urbuddy&hl=en
 <<>>
 
-FOR ANY MAKING CHANGES IN CODE OR DEVELOPING AND UPGRADING THE SAME CODE PLEASE TAKE MY PERMISSION. DO NOT COPY WITHOUT PERMISSION 
-.JUST SEND A SIMPLE MAIL AT shivendra15@iiitkottayam.ac.in and shivam9935@gmail.com  . MOST PROBABLY YOU WILL GET A POSITIVE RESPONSE XD.
+FOR MAKING ANY CHANGES IN CODE OR DEVELOPING AND UPGRADING THE SAME CODE YOU CAN ASK ME FOR ADDING YOU AS CONTRIBUTOR AND FORK A BRANCH FOR YOUR DEVELOPMENT.FOR LEARNING PURPOSES YOU CAN CLONE REPO. 
+.JUST SEND A SIMPLE MAIL AT shivendra15@iiitkottayam.ac.in and shivam9935@gmail.com FOR ANY REQUEST, MOST PROBABLY YOU WILL GET A POSITIVE RESPONSE XD.
 
 <<>>
 This is an android app developed by me for the use of IIIT kottayam's Students and Related people. Mess hostel and acandmic things + extra 
