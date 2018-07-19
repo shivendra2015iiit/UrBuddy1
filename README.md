@@ -7,7 +7,7 @@ FOR MAKING ANY CHANGES IN CODE OR DEVELOPING AND UPGRADING THE SAME CODE YOU CAN
 .JUST SEND A SIMPLE MAIL AT shivendra15@iiitkottayam.ac.in and shivam9935@gmail.com FOR ANY REQUEST, MOST PROBABLY YOU WILL GET A POSITIVE RESPONSE XD.
 
 <<>>
-This is an android app developed by me for the use of IIIT kottayam's Students and Related people. Mess hostel and acandmic things + extra 
+This is an android app developed for the use of IIIT kottayam's Students and Related people. Mess hostel and acandmic things + extra 
 functionality ,to apply for leave application online(Still needed to be added) and get instant notifiacations about events
 
 1) Appsuport database in firebase contains 
