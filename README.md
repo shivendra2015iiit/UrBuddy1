@@ -63,5 +63,12 @@ Storage structure a database acadmic contains name of the image for each values 
  To counter issue database contains name of the image , everytime when we upload changed image we rename if i.e. tt1.jpg we will change it to tt11.jpg so that image cache would be invalidated
  
  same thing with messmenu also.
+
+                                         
  
-                           
+                           PROTOCOL TO FOLLOW WHILE UPLOADING (PUBLISHING) ON PLAYSTORE
+      
+ 1) Change version code and version name in build.gradle app level
+ 2) Change version in contactus.xml in res/layout
+ 3) Change validate_app_version.java activity (2 places) with the current version number
+ 4) Change appsuport add current version name without '.' and keep 1 , if you want to disable old app then keep other version 0
